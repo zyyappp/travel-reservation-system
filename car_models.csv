@@ -1,0 +1,648 @@
+Maker,Genmodel,Segment,Rental_price
+Abarth,124 Spider,Convertible,300.77
+Abarth,500,Hatchback,122.0
+Abarth,500C,Convertible,174.11
+Abarth,595,Hatchback,142.52
+Abarth,695,Hatchback,176.72
+Abarth,Grande Punto,Hatchback,121.08
+Abarth,Punto Evo,Hatchback,144.95
+Alfa Romeo,147,Hatchback,116.55
+Alfa Romeo,156,Sedan,135.84
+Alfa Romeo,159,Sedan,171.38
+Alfa Romeo,166,Sedan,186.21
+Alfa Romeo,4C,Sports,651.75
+Alfa Romeo,Brera,Coupe,247.7
+Alfa Romeo,GT,Coupe,204.99
+Alfa Romeo,GTV,Coupe,215.87
+Alfa Romeo,Giulia,Sedan,257.61
+Alfa Romeo,Giulietta,Hatchback,159.15
+Alfa Romeo,MiTo,Hatchback,106.1
+Alfa Romeo,Spider,Convertible,242.45
+Alfa Romeo,Stelvio,SUV,296.88
+Aston Martin,DB11,Coupe,1596.96
+Aston Martin,DB7,Coupe,937.48
+Aston Martin,DB9,Coupe,1295.33
+Aston Martin,DBS,Coupe,1777.02
+Aston Martin,Rapide,Sedan,1282.26
+Aston Martin,Vanquish,Coupe,1909.0
+Aston Martin,Vantage,Coupe,944.1
+Aston Martin,Virage,Coupe,1582.14
+Audi,A1,Hatchback,123.0
+Audi,A2,Hatchback,115.33
+Audi,A3,Hatchback,148.22
+Audi,A4,Sedan,182.45
+Audi,A5,Coupe,275.55
+Audi,A6,Sedan,225.86
+Audi,A7,Sedan,382.29
+Audi,A8,Sedan,432.08
+Audi,Q2,SUV,182.92
+Audi,Q3,SUV,219.24
+Audi,Q5,SUV,262.25
+Audi,Q7,SUV,369.79
+Audi,Q8,SUV,560.32
+Audi,R8,Sports,1204.87
+Audi,TT,Coupe,254.28
+BMW,1 Series,Hatchback,156.77
+BMW,2 Series,Coupe,242.33
+BMW,3 Series,Sedan,185.07
+BMW,4 Series,Coupe,313.09
+BMW,5 Series,Sedan,241.03
+BMW,6 Series,Coupe,538.04
+BMW,7 Series,Sedan,429.52
+BMW,Alpina B3,Sedan,489.03
+BMW,Alpina B5,Sedan,629.96
+BMW,Alpina B6,Coupe,982.21
+BMW,Alpina D5 Bi-Turbo,Sedan,495.65
+BMW,X1,SUV,215.1
+BMW,X2,SUV,261.76
+BMW,X3,SUV,253.83
+BMW,X4,SUV,327.26
+BMW,X5,SUV,349.48
+BMW,X6,SUV,424.72
+BMW,Z3,Convertible,210.8
+BMW,Z4,Convertible,270.18
+BMW,i3,Hatchback,277.07
+BMW,i8,Sports,1417.52
+Bentley,Arnage,Sedan,1405.51
+Bentley,Bentayga,SUV,1300.92
+Bentley,Brooklands,Coupe,2449.37
+Bentley,Continental,Coupe,1295.94
+Bentley,Flying Spur,Sedan,1214.11
+Bentley,Mulsanne,Sedan,2002.44
+Cadillac,BLS,Sedan,183.45
+Cadillac,CTS,Sedan,223.82
+Cadillac,Escalade,SUV,426.36
+Cadillac,SRX,SUV,246.28
+Cadillac,STS,Sedan,297.86
+Chevrolet,Aveo,Hatchback,78.04
+Chevrolet,Blazer,SUV,197.77
+Chevrolet,Camaro,Sports,449.21
+Chevrolet,Captiva,SUV,163.61
+Chevrolet,Cruze,Sedan,118.17
+Chevrolet,Epica,Sedan,120.4
+Chevrolet,Kalos,Hatchback,61.26
+Chevrolet,Lacetti,Hatchback,86.38
+Chevrolet,Matiz,Hatchback,51.26
+Chevrolet,Orlando,MPV,149.94
+Chevrolet,Spark,Hatchback,67.48
+Chevrolet,Tacuma,MPV,97.32
+Chevrolet,Trax,SUV,134.18
+Chevrolet,Volt,Hatchback,308.26
+Chrysler,300C,Sedan,253.02
+Chrysler,Crossfire,Coupe,273.18
+Chrysler,Delta,Hatchback,142.02
+Chrysler,Grand Voyager,MPV,223.36
+Chrysler,Neon,Sedan,102.99
+Chrysler,PT Cruiser,Hatchback,119.47
+Chrysler,Sebring,Sedan,166.2
+Chrysler,Voyager,MPV,160.72
+Chrysler,Ypsilon,Hatchback,89.13
+Citroen,Berlingo,MPV,93.12
+Citroen,Berlingo Multispace,MPV,104.14
+Citroen,C-Crosser,SUV,191.15
+Citroen,C-Zero,Hatchback,212.37
+Citroen,C1,Hatchback,67.8
+Citroen,C2,Hatchback,68.95
+Citroen,C3,Hatchback,84.48
+Citroen,C3 Aircross,SUV,121.13
+Citroen,C3 Picasso,MPV,119.7
+Citroen,C3 Pluriel,Convertible,132.24
+Citroen,C4,Hatchback,116.15
+Citroen,C4 Cactus,SUV,141.16
+Citroen,C4 Picasso,MPV,152.1
+Citroen,C5,Sedan,153.16
+Citroen,C6,Sedan,276.56
+Citroen,C8,MPV,171.47
+Citroen,Dispatch,Van,166.13
+Citroen,Grand C4 Picasso,MPV,155.22
+Citroen,Nemo Multispace,MPV,92.65
+Citroen,Saxo,Hatchback,57.5
+Citroen,SpaceTourer,MPV,249.69
+Citroen,Synergie,MPV,148.74
+Citroen,Xantia,Sedan,105.48
+Citroen,Xsara,Hatchback,86.95
+Citroen,Xsara Picasso,MPV,112.7
+Corvette,C6,Sports,607.6
+Corvette,Stingray,Sports,796.04
+DS,3,Hatchback,118.42
+DS,4,Hatchback,163.4
+DS,5,Hatchback,218.19
+Dacia,Duster,SUV,79.18
+Dacia,Logan MCV,Estate,60.75
+Dacia,Sandero,Hatchback,52.64
+Daewoo,Kalos,Hatchback,61.48
+Daewoo,Lacetti,Hatchback,81.85
+Daewoo,Lanos,Hatchback,67.63
+Daewoo,Leganza,Sedan,111.57
+Daewoo,Matiz,Hatchback,52.98
+Daewoo,Musso,SUV,154.4
+Daewoo,Nubira,Sedan,95.79
+Daewoo,Tacuma,MPV,92.06
+Daihatsu,Charade,Hatchback,57.05
+Daihatsu,Copen,Convertible,123.2
+Daihatsu,Cuore,Hatchback,53.36
+Daihatsu,Fourtrak,SUV,133.94
+Daihatsu,Materia,Hatchback,94.2
+Daihatsu,Sirion,Hatchback,68.04
+Daihatsu,Terios,SUV,100.42
+Daihatsu,YRV,Hatchback,69.16
+Dodge,Avenger,Sedan,133.36
+Dodge,Caliber,Hatchback,107.35
+Dodge,Journey,SUV,145.02
+Dodge,Nitro,SUV,175.0
+Ferrari,360,Sports,1362.46
+Ferrari,456,Sports,2228.73
+Ferrari,458,Sports,2276.92
+Ferrari,488,Sports,2410.19
+Ferrari,550,Sports,1958.98
+Ferrari,612,Sports,2411.96
+Ferrari,812 Superfast,Sports,3440.05
+Ferrari,California,Convertible,1543.47
+Ferrari,F12berlinetta,Sports,3151.54
+Ferrari,F355,Sports,1217.12
+Ferrari,F430,Sports,1781.92
+Ferrari,FF,Sports,3015.25
+Ferrari,Gtc4lusso,Sports,2612.07
+Ferrari,Portofino,Convertible,1734.35
+Fiat,124 Spider,Convertible,211.7
+Fiat,500,Hatchback,85.59
+Fiat,500L,Hatchback,119.35
+Fiat,500X,SUV,127.94
+Fiat,Barchetta,Convertible,154.71
+Fiat,Brava,Hatchback,88.03
+Fiat,Bravo,Hatchback,102.88
+Fiat,Croma,Sedan,130.15
+Fiat,Doblo,MPV,99.32
+Fiat,Fiorino,Van,105.99
+Fiat,Grande Punto,Hatchback,69.44
+Fiat,Idea,MPV,87.74
+Fiat,Marea,Sedan,107.24
+Fiat,Multipla,MPV,121.23
+Fiat,Panda,Hatchback,69.59
+Fiat,Punto,Hatchback,73.21
+Fiat,Punto Evo,Hatchback,86.91
+Fiat,Qubo,MPV,99.49
+Fiat,Scudo,Van,162.1
+Fiat,Sedici,SUV,94.97
+Fiat,Seicento,Hatchback,49.82
+Fiat,Stilo,Hatchback,88.22
+Fiat,Tipo,Hatchback,115.81
+Fiat,Ulysse,MPV,148.55
+Ford,B-Max,MPV,116.65
+Ford,C-Max,MPV,162.97
+Ford,Cougar,Coupe,209.06
+Ford,EcoSport,SUV,129.83
+Ford,Edge,SUV,271.76
+Ford,Explorer,SUV,224.22
+Ford,Fiesta,Hatchback,78.92
+Ford,Focus,Hatchback,112.72
+Ford,Focus C-Max,MPV,121.0
+Ford,Fusion,MPV,92.98
+Ford,Galaxy,MPV,190.73
+Ford,Grand C-Max,MPV,181.32
+Ford,Grand Tourneo Connect,MPV,159.7
+Ford,Ka,Hatchback,69.48
+Ford,Kuga,SUV,183.2
+Ford,Maverick,SUV,162.04
+Ford,Mondeo,Sedan,136.82
+Ford,Mustang,Sports,411.87
+Ford,Puma,SUV,113.73
+Ford,S-Max,MPV,190.07
+Ford,Streetka,Convertible,130.58
+Ford,Tourneo Connect,MPV,130.71
+Ford,Tourneo Courier,MPV,127.94
+Ford,Transit Courier,Van,137.35
+Honda,Accord,Sedan,160.5
+Honda,CR-V,SUV,166.23
+Honda,CR-Z,Coupe,184.81
+Honda,Civic,Hatchback,117.49
+Honda,FR-V,MPV,134.15
+Honda,HR-V,SUV,148.92
+Honda,Insight,Hatchback,151.2
+Honda,Integra,Coupe,209.22
+Honda,Jazz,Hatchback,96.2
+Honda,Legend,Sedan,297.04
+Honda,Prelude,Coupe,196.7
+Honda,S2000,Convertible,283.95
+Honda,Stream,MPV,142.24
+Hummer,H2,SUV,427.04
+Hummer,H3,SUV,233.6
+Hyundai,Accent,Sedan,68.13
+Hyundai,Amica,Hatchback,52.85
+Hyundai,Coupe,Coupe,154.16
+Hyundai,Elantra,Sedan,94.43
+Hyundai,Genesis,Sedan,420.91
+Hyundai,Getz,Hatchback,62.74
+Hyundai,Grandeur,Sedan,233.61
+Hyundai,Ioniq,Hatchback,178.79
+Hyundai,Kona,SUV,140.46
+Hyundai,Matrix,MPV,92.22
+Hyundai,Santa Fe,SUV,192.71
+Hyundai,Sonata,Sedan,129.91
+Hyundai,Terracan,SUV,165.75
+Hyundai,Trajet,MPV,134.54
+Hyundai,Tucson,SUV,148.85
+Hyundai,Veloster,Coupe,182.54
+Hyundai,XG30,Sedan,182.98
+Hyundai,i10,Hatchback,72.85
+Hyundai,i20,Hatchback,92.36
+Hyundai,i30,Hatchback,116.3
+Hyundai,i40,Sedan,173.67
+Hyundai,i800,MPV,196.76
+Hyundai,ix20,MPV,118.68
+Hyundai,ix35,SUV,146.69
+Infiniti,EX,SUV,305.27
+Infiniti,FX,SUV,378.5
+Infiniti,G,Sedan,286.32
+Infiniti,M,Sedan,306.17
+Infiniti,Q30,Hatchback,180.27
+Infiniti,Q50,Sedan,275.24
+Infiniti,Q60,Coupe,355.96
+Infiniti,QX30,SUV,253.87
+Isuzu,Trooper,SUV,173.9
+Jaguar,E-PACE,SUV,248.62
+Jaguar,F-PACE,SUV,301.63
+Jaguar,F-Type,Sports,681.2
+Jaguar,S-Type,Sedan,236.24
+Jaguar,X-Type,Sedan,179.4
+Jaguar,XE,Sedan,237.93
+Jaguar,XF,Sedan,275.21
+Jaguar,XJ,Sedan,401.38
+Jaguar,XK,Coupe,615.17
+Jaguar,XK8,Coupe,523.55
+Jeep,Cherokee,SUV,187.79
+Jeep,Commander,SUV,256.2
+Jeep,Compass,SUV,161.15
+Jeep,Grand Cherokee,SUV,306.23
+Jeep,Patriot,SUV,130.86
+Jeep,Renegade,SUV,154.98
+Jeep,Wrangler,SUV,186.36
+Kia,'Cee''d',Hatchback,109.3
+Kia,'Pro_Cee''d',Hatchback,119.5
+Kia,Carens,MPV,113.27
+Kia,Cerato,Sedan,88.45
+Kia,Magentis,Sedan,118.05
+Kia,Niro,SUV,187.8
+Kia,Optima,Sedan,181.09
+Kia,Picanto,Hatchback,58.98
+Kia,Rio,Hatchback,71.61
+Kia,Sedona,MPV,142.78
+Kia,Sephia,Sedan,75.28
+Kia,Sorento,SUV,196.17
+Kia,Soul,Hatchback,107.86
+Kia,Soul EV,Hatchback,267.57
+Kia,Sportage,SUV,135.11
+Kia,Stinger,Sedan,273.72
+Kia,Stonic,SUV,141.34
+Kia,Venga,MPV,109.07
+Lamborghini,Aventador,Sports,3420.7
+Lamborghini,Gallardo,Sports,1696.74
+Lamborghini,Huracan,Sports,2215.86
+Lamborghini,Murcielago,Sports,2387.66
+Land Rover,Discovery,SUV,265.97
+Land Rover,Discovery Sport,SUV,266.45
+Land Rover,Freelander,SUV,163.21
+Land Rover,Range Rover,SUV,503.63
+Land Rover,Range Rover Evoque,SUV,259.24
+Land Rover,Range Rover Sport,SUV,399.74
+Land Rover,Range Rover Velar,SUV,391.81
+Lexus,CT,Hatchback,200.09
+Lexus,GS,Sedan,280.35
+Lexus,IS,Sedan,212.84
+Lexus,LC,Coupe,786.24
+Lexus,LS,Sedan,551.75
+Lexus,NX,SUV,264.64
+Lexus,RC,Coupe,440.11
+Lexus,RX,SUV,314.81
+Lexus,SC,Coupe,569.34
+Lotus,Elise,Sports,342.11
+Lotus,Evora,Sports,765.98
+Lotus,Exige,Sports,532.09
+MG,GS,SUV,130.33
+MG,MG3,Hatchback,72.99
+MG,MG6,Sedan,129.52
+MG,TF,Convertible,164.52
+MG,ZR,Hatchback,86.51
+MG,ZS,Hatchback,100.74
+MG,ZT,Sedan,145.24
+MINI,Clubman,Hatchback,136.61
+MINI,Convertible,Convertible,161.66
+MINI,Cooper s,Hatchback,151.58
+MINI,Countryman,SUV,145.13
+MINI,Coupe,Coupe,176.47
+MINI,Hatch,Hatchback,104.12
+MINI,John Cooper Works,Hatchback,199.97
+MINI,Paceman,SUV,166.29
+MINI,Roadster,Convertible,189.61
+Maserati,Coupe,Coupe,622.46
+Maserati,Ghibli,Sedan,431.13
+Maserati,GranCabrio,Convertible,1045.42
+Maserati,Gransport,Coupe,701.42
+Maserati,Granturismo,Coupe,862.21
+Maserati,Levante,SUV,479.82
+Maserati,Quattroporte,Sedan,641.65
+Maserati,Spyder,Convertible,682.04
+Maybach,57,Sedan,2274.18
+Maybach,62,Sedan,2607.57
+Mazda,323,Hatchback,95.03
+Mazda,626,Sedan,113.89
+Mazda,CX-3,SUV,158.61
+Mazda,CX-5,SUV,194.7
+Mazda,CX-7,SUV,219.36
+Mazda,Demio,Hatchback,77.76
+Mazda,MPV,MPV,159.04
+Mazda,MX-5,Convertible,171.15
+Mazda,Mazda2,Hatchback,86.63
+Mazda,Mazda3,Hatchback,122.07
+Mazda,Mazda5,MPV,145.9
+Mazda,Mazda6,Sedan,140.88
+Mazda,Premacy,MPV,117.58
+Mazda,RX-8,Coupe,222.98
+Mazda,Tribute,SUV,139.39
+McLaren,540C,Sports,1779.97
+McLaren,570GT,Sports,2070.03
+McLaren,570S,Sports,2068.38
+McLaren,600LT,Sports,2551.28
+Mercedes-Benz,A Class,Hatchback,132.06
+Mercedes-Benz,Amg Gt,Sports,1322.7
+Mercedes-Benz,B Class,MPV,173.45
+Mercedes-Benz,C Class,Sedan,197.65
+Mercedes-Benz,CL,Coupe,809.69
+Mercedes-Benz,CLA Class,Sedan,223.47
+Mercedes-Benz,CLC Class,Coupe,199.55
+Mercedes-Benz,CLK,Coupe,299.68
+Mercedes-Benz,CLS,Sedan,398.81
+Mercedes-Benz,E Class,Sedan,245.69
+Mercedes-Benz,G Class,SUV,741.78
+Mercedes-Benz,GL Class,SUV,493.28
+Mercedes-Benz,GLA Class,SUV,221.77
+Mercedes-Benz,GLC Class,SUV,313.74
+Mercedes-Benz,GLE Class,SUV,448.82
+Mercedes-Benz,GLS Class,SUV,689.75
+Mercedes-Benz,M Class,SUV,316.02
+Mercedes-Benz,R Class,MPV,332.63
+Mercedes-Benz,S Class,Sedan,482.32
+Mercedes-Benz,SL Class,Convertible,660.29
+Mercedes-Benz,SLC,Convertible,339.36
+Mercedes-Benz,SLK,Convertible,295.55
+Mercedes-Benz,V Class,MPV,313.4
+Mercedes-Benz,Vaneo,MPV,127.73
+Mercedes-Benz,Viano,MPV,236.12
+Mitsubishi,ASX,SUV,134.9
+Mitsubishi,Carisma,Sedan,93.4
+Mitsubishi,Colt,Hatchback,72.63
+Mitsubishi,Eclipse Cross,SUV,182.13
+Mitsubishi,FTO,Coupe,240.62
+Mitsubishi,Galant,Sedan,144.04
+Mitsubishi,Grandis,MPV,162.66
+Mitsubishi,Lancer,Sedan,180.47
+Mitsubishi,Mirage,Hatchback,91.92
+Mitsubishi,Outlander,SUV,182.69
+Mitsubishi,Shogun,SUV,213.27
+Mitsubishi,Shogun Pinin,SUV,111.47
+Mitsubishi,Shogun Sport,SUV,182.1
+Mitsubishi,Space Star,Hatchback,86.7
+Mitsubishi,Space Wagon,MPV,137.79
+Mitsubishi,i,Hatchback,146.32
+Nissan,350 Z,Sports,331.59
+Nissan,370 Z,Sports,359.04
+Nissan,Almera,Hatchback,84.02
+Nissan,Almera Tino,MPV,110.01
+Nissan,Cube,Hatchback,121.21
+Nissan,GT-R,Sports,911.99
+Nissan,Juke,SUV,119.88
+Nissan,Leaf,Hatchback,239.67
+Nissan,Micra,Hatchback,73.49
+Nissan,Murano,SUV,278.23
+Nissan,NV200,Van,141.44
+Nissan,Note,Hatchback,91.14
+Nissan,Pathfinder,SUV,241.18
+Nissan,Patrol,SUV,203.98
+Nissan,Pixo,Hatchback,64.24
+Nissan,Primera,Sedan,114.27
+Nissan,Pulsar,Hatchback,122.8
+Nissan,Qashqai,SUV,144.73
+Nissan,Qashqai+2,SUV,145.87
+Nissan,Serena,MPV,131.42
+Nissan,Terrano,SUV,148.37
+Nissan,X-Trail,SUV,175.92
+Perodua,Kelisa,Hatchback,41.6
+Perodua,Kenari,MPV,54.18
+Perodua,Myvi,Hatchback,62.43
+Peugeot,1007,Hatchback,98.35
+Peugeot,106,Hatchback,57.9
+Peugeot,107,Hatchback,65.5
+Peugeot,108,Hatchback,74.9
+Peugeot,2008,SUV,137.74
+Peugeot,206,Hatchback,71.7
+Peugeot,207,Hatchback,94.26
+Peugeot,208,Hatchback,110.88
+Peugeot,3008,SUV,158.22
+Peugeot,306,Hatchback,114.15
+Peugeot,307,Hatchback,99.24
+Peugeot,308,Hatchback,124.32
+Peugeot,4007,SUV,207.45
+Peugeot,406,Sedan,119.92
+Peugeot,407,Sedan,137.45
+Peugeot,5008,SUV,170.32
+Peugeot,508,Sedan,183.42
+Peugeot,607,Sedan,186.59
+Peugeot,806,MPV,156.8
+Peugeot,807,MPV,173.97
+Peugeot,Bipper Tepee,MPV,101.5
+Peugeot,Expert Combi,Van,218.01
+Peugeot,Expert Tepee,MPV,184.24
+Peugeot,Partner Combi,MPV,85.16
+Peugeot,Partner Tepee,MPV,115.89
+Peugeot,RCZ,Coupe,224.32
+Peugeot,Traveller,MPV,251.01
+Peugeot,iOn,Hatchback,212.37
+Porsche,718 Boxster,Convertible,456.18
+Porsche,718 Cayman,Coupe,436.56
+Porsche,911,Sports,862.97
+Porsche,Boxster,Convertible,372.07
+Porsche,Cayenne,SUV,374.2
+Porsche,Cayman,Coupe,395.55
+Porsche,Macan,SUV,376.48
+Porsche,Panamera,Sedan,556.22
+Proton,GEN-2,Hatchback,72.29
+Proton,Impian,Sedan,95.62
+Proton,Persona,Sedan,92.68
+Proton,Satria Neo,Hatchback,69.23
+Proton,Savvy,Hatchback,59.02
+Proton,Wira,Sedan,66.45
+Renault,Captur,SUV,129.58
+Renault,Clio,Hatchback,77.74
+Renault,Espace,MPV,172.05
+Renault,Grand Espace,MPV,205.83
+Renault,Grand Modus,Hatchback,93.84
+Renault,Grand Scenic,MPV,157.62
+Renault,Kadjar,SUV,165.84
+Renault,Kangoo,MPV,85.18
+Renault,Koleos,SUV,198.14
+Renault,Laguna,Sedan,135.34
+Renault,Megane,Hatchback,103.44
+Renault,Modus,Hatchback,85.55
+Renault,Scenic,MPV,134.1
+Renault,Twingo,Hatchback,76.15
+Renault,Vel Satis,Sedan,182.6
+Renault,Wind,Convertible,148.36
+Renault,Zoe,Hatchback,208.38
+Rolls-Royce,Dawn,Convertible,2843.94
+Rolls-Royce,Ghost,Sedan,1884.08
+Rolls-Royce,Phantom,Sedan,2479.11
+Rolls-Royce,Silver Seraph,Sedan,1415.18
+Rolls-Royce,Wraith,Coupe,2515.52
+Rover,25,Hatchback,68.84
+Rover,45,Sedan,98.49
+Rover,600,Sedan,136.24
+Rover,75,Sedan,148.82
+Rover,City Rover,Hatchback,55.54
+Rover,Mini,Hatchback,74.69
+Rover,Streetwise,Hatchback,87.72
+SEAT,Alhambra,MPV,179.08
+SEAT,Altea,MPV,124.6
+SEAT,Arona,SUV,143.63
+SEAT,Arosa,Hatchback,56.43
+SEAT,Ateca,SUV,159.94
+SEAT,Cordoba,Sedan,85.83
+SEAT,Exeo,Sedan,163.04
+SEAT,Ibiza,Hatchback,79.53
+SEAT,Leon,Hatchback,125.1
+SEAT,Mii,Hatchback,77.09
+SEAT,Toledo,Sedan,123.26
+SKODA,Citigo,Hatchback,71.94
+SKODA,Fabia,Hatchback,74.67
+SKODA,Felicia,Hatchback,53.88
+SKODA,Karoq,SUV,181.6
+SKODA,Kodiaq,SUV,190.06
+SKODA,Octavia,Sedan,114.9
+SKODA,Rapid,Hatchback,118.2
+SKODA,Roomster,MPV,87.85
+SKODA,Superb,Sedan,143.76
+SKODA,Yeti,SUV,133.44
+Saab,9-3,Sedan,155.77
+Saab,9-5,Sedan,190.21
+Smart,Roadster,Convertible,114.72
+Smart,forfour,Hatchback,91.24
+Smart,fortwo,Hatchback,75.12
+Ssangyong,Korando,SUV,136.04
+Ssangyong,Kyron,SUV,131.46
+Ssangyong,Musso,SUV,144.95
+Ssangyong,Rexton,SUV,174.65
+Ssangyong,Rodius,MPV,126.01
+Ssangyong,Tivoli,SUV,114.22
+Ssangyong,Tivoli XLV,SUV,154.55
+Ssangyong,Turismo,MPV,162.02
+Subaru,BRZ,Coupe,246.91
+Subaru,Forester,SUV,177.22
+Subaru,Impreza,Sedan,126.26
+Subaru,Justy,Hatchback,79.27
+Subaru,Legacy,Sedan,151.31
+Subaru,Levorg,Estate,245.99
+Subaru,Outback,Estate,215.34
+Subaru,XV,SUV,182.86
+Suzuki,Alto,Hatchback,57.43
+Suzuki,Baleno,Hatchback,101.14
+Suzuki,Celerio,Hatchback,69.2
+Suzuki,Grand Vitara,SUV,114.64
+Suzuki,Ignis,Hatchback,72.27
+Suzuki,Jimny,SUV,95.56
+Suzuki,Kizashi,Sedan,188.68
+Suzuki,Liana,Sedan,86.7
+Suzuki,SX4,SUV,99.2
+Suzuki,SX4 S-Cross,SUV,135.29
+Suzuki,Splash,Hatchback,79.84
+Suzuki,Swift,Hatchback,76.17
+Suzuki,Vitara,SUV,122.09
+Suzuki,Wagon R,Hatchback,68.31
+TVR,Cerbera,Sports,541.9
+TVR,Tuscan,Sports,524.76
+Tesla,Model S,Sedan,511.22
+Tesla,Model X,SUV,637.1
+Toyota,AYGO,Hatchback,69.38
+Toyota,Auris,Hatchback,123.87
+Toyota,Avensis,Sedan,135.38
+Toyota,Avensis Verso,MPV,158.28
+Toyota,C-HR,SUV,185.25
+Toyota,Camry,Sedan,171.74
+Toyota,Celica,Coupe,185.18
+Toyota,Corolla,Sedan,98.42
+Toyota,GT86,Coupe,255.19
+Toyota,Land Cruiser,SUV,253.5
+Toyota,Land Cruiser Amazon,SUV,376.18
+Toyota,Land Cruiser Colorado,SUV,192.53
+Toyota,MR2,Sports,239.38
+Toyota,Picnic,MPV,139.04
+Toyota,Previa,MPV,174.11
+Toyota,Prius,Hatchback,169.68
+Toyota,RAV4,SUV,169.67
+Toyota,Starlet,Hatchback,68.85
+Toyota,Urbancruiser,SUV,135.67
+Toyota,Verso,MPV,143.78
+Toyota,Yaris,Hatchback,82.94
+Toyota,iQ,Hatchback,90.6
+Vauxhall,ADAM,Hatchback,108.55
+Vauxhall,Agila,Hatchback,61.33
+Vauxhall,Ampera,Hatchback,310.08
+Vauxhall,Antara,SUV,170.71
+Vauxhall,Astra,Hatchback,107.21
+Vauxhall,Cascada,Convertible,262.54
+Vauxhall,Combo Tour,MPV,121.76
+Vauxhall,Corsa,Hatchback,73.72
+Vauxhall,Crossland X,SUV,144.86
+Vauxhall,Frontera,SUV,145.02
+Vauxhall,Grandland X,SUV,194.21
+Vauxhall,Insignia,Sedan,146.58
+Vauxhall,Meriva,MPV,102.2
+Vauxhall,Mokka,SUV,148.87
+Vauxhall,Monaro,Coupe,306.78
+Vauxhall,Omega,Sedan,153.05
+Vauxhall,Signum,Hatchback,157.47
+Vauxhall,Tigra,Convertible,139.99
+Vauxhall,VX220,Sports,320.47
+Vauxhall,VXR8,Sedan,376.57
+Vauxhall,Vectra,Sedan,119.71
+Vauxhall,Viva,Hatchback,79.64
+Vauxhall,Vivaro,Van,206.62
+Vauxhall,Zafira,MPV,134.36
+Volkswagen,Arteon,Sedan,271.03
+Volkswagen,Beetle,Hatchback,117.9
+Volkswagen,Bora,Sedan,117.94
+Volkswagen,CC,Sedan,215.33
+Volkswagen,Caddy Life,MPV,182.43
+Volkswagen,Caddy Maxi Life,MPV,177.01
+Volkswagen,California,Van,271.79
+Volkswagen,Caravelle,Van,226.91
+Volkswagen,E-Golf,Hatchback,272.66
+Volkswagen,Eos,Convertible,229.66
+Volkswagen,Fox,Hatchback,59.46
+Volkswagen,Golf,Hatchback,126.29
+Volkswagen,Jetta,Sedan,148.35
+Volkswagen,Lupo,Hatchback,66.04
+Volkswagen,Passat,Sedan,152.89
+Volkswagen,Phaeton,Sedan,397.64
+Volkswagen,Polo,Hatchback,79.25
+Volkswagen,Scirocco,Coupe,207.91
+Volkswagen,Sharan,MPV,187.97
+Volkswagen,T-Roc,SUV,164.68
+Volkswagen,Tiguan,SUV,181.12
+Volkswagen,Touareg,SUV,290.75
+Volkswagen,Touran,MPV,155.64
+Volkswagen,up!,Hatchback,75.77
+Volvo,C30,Hatchback,128.85
+Volvo,C70,Convertible,272.21
+Volvo,S40,Sedan,128.34
+Volvo,S60,Sedan,179.53
+Volvo,S70,Sedan,165.53
+Volvo,S80,Sedan,211.87
+Volvo,S90,Sedan,291.97
+Volvo,V40,Hatchback,152.87
+Volvo,V50,Estate,151.36
+Volvo,V60,Estate,196.78
+Volvo,V70,Estate,200.65
+Volvo,V90,Estate,309.55
+Volvo,XC40,SUV,240.41
+Volvo,XC60,SUV,253.35
+Volvo,XC70,Estate,258.7
+Volvo,XC90,SUV,300.19
