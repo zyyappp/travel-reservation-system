@@ -1,6 +1,9 @@
 import subprocess
 import pandas as pd
-from InquirerPy import inquirer
+import datetime
+from selection_helper import select, search
+from file_manager import login_user
+
 interface = f"""
 {"-" * 20}
 1. Hotels
@@ -16,12 +19,7 @@ interface = f"""
 def select_city():
     city_data = pd.read_csv("malaysia_hotels.csv")
     subprocess.run("cls", shell=True)
-
-    city = inquirer.fuzzy(
-        message= f"--- Cities ---",
-        choices = city_data[" cityName"].drop_duplicates(),
-        height= 10
-    ).execute()
+    city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
 
     return city
     
@@ -30,42 +28,27 @@ def select_city():
 def reserve_car():
     car_data = pd.read_csv("car_models.csv")
     subprocess.run("cls", shell=True)
-    choice = inquirer.select(
-        message=f"{"-" * 20}\nCars\n{"-" * 20}",
-        choices = ["Full Criteria Search", "Based on Segment"]
-    ).execute()
+
+    choice = select(f"{"-" * 20}\nCars\n{"-" * 20}", ["Full Criteria Search", "Based on Segment"])
 
     city = select_city()
 
     if choice == "Full Criteria Search":
         # Full criteria includes brand, segment (specific)
 
-        brand = inquirer.fuzzy(
-            message= f"--- Car Brands ---",
-            choices = car_data["Maker"].drop_duplicates(),
-            height= 10
-        ).execute()
 
-        brand_segment = inquirer.fuzzy(
-            message = f"--- Segments for {brand} ---",
-            choices = car_data[car_data["Maker"] == brand]["Segment"].drop_duplicates(),
-            height= 10
-        ).execute()
+        brand = search("--- Car Brands ---", car_data["Maker"].drop_duplicates())
+        segment = search(f"--- Segments for {brand} ---", car_data[car_data["Maker"] == brand]["Segment"].drop_duplicates())
 
-        car_model = inquirer.fuzzy(
-            message= f"--- Models for {brand} {brand_segment} ---",
-            choices= car_data[(car_data["Maker"] == brand) & (car_data["Segment"] == brand_segment)]["Genmodel"].drop_duplicates(),
-            height= 10
-        ).execute()
+        car_model = search(f"--- Models for {brand} {segment} ---", car_data[(car_data["Maker"] == brand) & (car_data["Segment"] == segment)]["Genmodel"].drop_duplicates())
+
+        car_price = float(car_data[(car_data["Maker"] == brand) & (car_data["Segment"] == segment) & (car_data["Genmodel"] == car_model)]["Rental_price"].to_list()[0])
 
 
     elif choice == "Based on Segment":
         #Includes segments, ignore brand
-        segment = inquirer.fuzzy( 
-            message= "--- Select Segment ---",
-            choices = car_data["Segment"].drop_duplicates(),
-            height= 10
-        ).execute()
+        segment = search("--- Select Segment ---", car_data["Segment"].drop_duplicates() )
+
 
         segment_data = car_data[car_data["Segment"] == segment].drop_duplicates().reset_index(drop=True)
 
@@ -73,11 +56,25 @@ def reserve_car():
             f"{i+1}. " + " | ".join(str(value) for value in row)
             for i, row in segment_data.iterrows()
         ]
-        car_series = inquirer.select( #Series object
-            message= "-" * 20,
-            choices= choices,
-            height= 10
-        ).execute()
+        selected = select("--- Select Car ---", choices)
+
+        selected_index = choices.index(selected)
+
+        brand = segment_data.iloc[selected_index]["Maker"]
+        car_model = segment_data.iloc[selected_index]["Genmodel"]
+        car_price = float(segment_data.iloc[selected_index]["Rental_price"])
+
+    car_details = f"""
+{"-" * 20}
+Brand : {brand}
+Model : {car_model}
+Segment : {segment}
+Price : RM {car_price}
+{"-" * 20}
+"""
+    print(car_details)
+
+    option = select("Enter option", ["Proceed to checkout", "Continue with another reservation", "Quit"])
 
 
 def menu_interface():
@@ -106,5 +103,5 @@ def menu_interface():
         
 
 
-
+login_user()
 menu_interface()
