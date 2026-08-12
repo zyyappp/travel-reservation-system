@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 from selection_helper import select, search
 from login_helper import login_user
+from config import DATA_FOLDER
 
 interface = f"""
 {"-" * 20}
@@ -17,7 +18,7 @@ interface = f"""
             """
 
 def select_city():
-    city_data = pd.read_csv("malaysia_hotels.csv")
+    city_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")
     subprocess.run("cls", shell=True)
     city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
 
@@ -26,7 +27,7 @@ def select_city():
 
 
 def reserve_car():
-    car_data = pd.read_csv("car_models.csv")
+    car_data = pd.read_csv(DATA_FOLDER /"car_models.csv")
     subprocess.run("cls", shell=True)
 
     choice = select(f"{"-" * 20}\nCars\n{"-" * 20}", ["Full Criteria Search", "Based on Segment"])
