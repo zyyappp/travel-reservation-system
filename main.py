@@ -11,7 +11,6 @@ def menu_interface():
 
     redirect = {
         "Hotels" : None,
-        "Flights" : None,
         "Trains" : None,
         "Cars" : reserve_car,
         "Attractions" : None,
@@ -35,7 +34,7 @@ def menu_interface():
         elif user_input == menu_options[-2]:
             user = redirect[user_input](user.id)
             continue
-        elif user_input == menu_options[3]:
+        elif user_input == menu_options[2]:
             redirect[user_input](user.id)
             continue
         
