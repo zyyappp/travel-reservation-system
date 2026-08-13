@@ -1,6 +1,6 @@
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
-from config import BASE_DIR, DATA_FOLDER, RESERVES_PATH, city_data, car_data
+from config import city_data, car_data
 
 def select_city(id):
     reserve_data = load_reserve()

@@ -6,7 +6,7 @@ from features.city import switch_city
 
 def menu_interface():
     user = login_user()
-    menu_options = ["Hotels", "Flights", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Switch Accounts", "Quit"]
+    menu_options = ["Hotels", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Switch Accounts", "Quit"]
     menu = True
 
     redirect = {

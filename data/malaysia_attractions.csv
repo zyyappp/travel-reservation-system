@@ -1,0 +1,101 @@
+Name,City,State,Category,Entry_Price_MYR,Latitude,Longitude
+Petronas Twin Towers,Kuala Lumpur,Kuala Lumpur,Landmark,98,3.1579,101.7116
+KL Tower (Menara KL),Kuala Lumpur,Kuala Lumpur,Landmark,65,3.1528,101.7038
+Aquaria KLCC,Kuala Lumpur,Kuala Lumpur,Museum,69,3.158,101.7123
+National Museum (Muzium Negara),Kuala Lumpur,Kuala Lumpur,Museum,5,3.1367,101.6885
+Islamic Arts Museum Malaysia,Kuala Lumpur,Kuala Lumpur,Museum,20,3.1424,101.6889
+KL Bird Park,Kuala Lumpur,Kuala Lumpur,Nature,75,3.1417,101.6889
+KL Butterfly Park,Kuala Lumpur,Kuala Lumpur,Nature,25,3.1428,101.6878
+Merdeka Square,Kuala Lumpur,Kuala Lumpur,Landmark,0,3.1478,101.6939
+Central Market,Kuala Lumpur,Kuala Lumpur,Cultural,0,3.1435,101.696
+Thean Hou Temple,Kuala Lumpur,Kuala Lumpur,Religious,0,3.118,101.682
+National Mosque (Masjid Negara),Kuala Lumpur,Kuala Lumpur,Religious,0,3.142,101.6931
+Zoo Negara,Kuala Lumpur,Kuala Lumpur,Nature,65,3.211,101.758
+Sunway Lagoon,Petaling Jaya,Selangor,Theme Park,180,3.0655,101.607
+Batu Caves,Gombak,Selangor,Religious,0,3.2379,101.684
+Farm in the City,Selayang,Selangor,Nature,45,3.2611,101.6483
+Skytrex Adventure Shah Alam,Shah Alam,Selangor,Adventure,55,3.0733,101.5185
+i-City Shah Alam,Shah Alam,Selangor,Theme Park,25,3.0653,101.4996
+Kuala Selangor Firefly Park,Kuala Selangor,Selangor,Nature,25,3.3494,101.2469
+Sultan Salahuddin Abdul Aziz Mosque (Blue Mosque),Shah Alam,Selangor,Religious,0,3.0733,101.5185
+Bukit Melawati,Kuala Selangor,Selangor,Nature,0,3.3467,101.2469
+Putrajaya Botanical Garden,Putrajaya,Putrajaya,Nature,0,2.9403,101.7178
+Putra Mosque,Putrajaya,Putrajaya,Religious,0,2.9366,101.6906
+Putrajaya Lake Cruise,Putrajaya,Putrajaya,Adventure,25,2.9264,101.6964
+Millennium Monument,Putrajaya,Putrajaya,Landmark,0,2.9358,101.69
+Port Dickson Beach,Port Dickson,Negeri Sembilan,Beach,0,2.5228,101.7958
+Seremban Lake Gardens,Seremban,Negeri Sembilan,Nature,0,2.7167,101.942
+Army Museum Port Dickson,Port Dickson,Negeri Sembilan,Museum,5,2.5167,101.7961
+A Famosa Fort,Melaka City,Melaka,Cultural,0,2.1908,102.25
+Jonker Street,Melaka City,Melaka,Cultural,0,2.1962,102.2469
+Melaka River Cruise,Melaka City,Melaka,Adventure,25,2.1938,102.2467
+St. Paul's Hill,Melaka City,Melaka,Cultural,0,2.1908,102.2489
+Baba Nyonya Heritage Museum,Melaka City,Melaka,Museum,18,2.1955,102.2478
+Melaka Straits Mosque,Melaka City,Melaka,Religious,0,2.1783,102.2481
+Taming Sari Tower,Melaka City,Melaka,Landmark,23,2.19,102.2494
+A Famosa Water World,Alor Gajah,Melaka,Theme Park,68,2.3572,102.1039
+Legoland Malaysia,Nusajaya,Johor,Theme Park,235,1.4269,103.6289
+Legoland Water Park,Nusajaya,Johor,Theme Park,150,1.4262,103.6286
+Hello Kitty Town,Nusajaya,Johor,Theme Park,68,1.4283,103.6294
+Desaru Beach,Desaru,Johor,Beach,0,1.5333,104.25
+Johor Bahru City Square,Johor Bahru,Johor,Cultural,0,1.461,103.759
+Sultan Abu Bakar State Mosque,Johor Bahru,Johor,Religious,0,1.4655,103.7514
+Istana Bukit Serene,Johor Bahru,Johor,Landmark,0,1.4739,103.7297
+Genting SkyWorlds Theme Park,Genting Highlands,Pahang,Theme Park,180,3.4227,101.7939
+Resorts World Genting,Genting Highlands,Pahang,Theme Park,0,3.4227,101.7939
+Cameron Highlands Tea Plantations,Cameron Highlands,Pahang,Nature,0,4.4696,101.3868
+Taman Negara National Park,Kuala Tahan,Pahang,Nature,1,4.3833,102.4
+Sungai Lembing,Kuantan,Pahang,Nature,10,3.9333,103.0333
+Teluk Cempedak Beach,Kuantan,Pahang,Beach,0,3.8228,103.3611
+Perhentian Islands,Perhentian,Terengganu,Beach,0,5.908,102.737
+Redang Island,Redang,Terengganu,Beach,0,5.7833,103.0167
+Kenyir Lake,Hulu Terengganu,Terengganu,Nature,0,5.05,102.7667
+Crystal Mosque,Kuala Terengganu,Terengganu,Religious,0,5.341,103.033
+Islamic Civilization Park,Kuala Terengganu,Terengganu,Cultural,15,5.3406,103.0344
+Kota Bharu Central Market,Kota Bharu,Kelantan,Cultural,0,6.1333,102.2386
+Pantai Cahaya Bulan (PCB Beach),Kota Bharu,Kelantan,Beach,0,6.1833,102.2833
+Istana Jahar,Kota Bharu,Kelantan,Museum,5,6.1319,102.2417
+Perak Tong Temple,Ipoh,Perak,Religious,5,4.628,101.085
+Sam Poh Tong Temple,Ipoh,Perak,Religious,0,4.5697,101.0906
+Kek Lok Tong Temple,Ipoh,Perak,Religious,0,4.5975,101.1019
+Lost World of Tambun,Ipoh,Perak,Theme Park,115,4.6089,101.1214
+Kellie's Castle,Batu Gajah,Perak,Cultural,8,4.4694,101.1275
+Taiping Lake Gardens,Taiping,Perak,Nature,0,4.8547,100.735
+Taiping Zoo,Taiping,Perak,Nature,22,4.8583,100.7378
+George Town Heritage Area,George Town,Penang,Cultural,0,5.4141,100.3288
+Penang Hill,George Town,Penang,Nature,30,5.423,100.2778
+Kek Lok Si Temple,Air Itam,Penang,Religious,2,5.3997,100.2739
+Batu Ferringhi Beach,Batu Ferringhi,Penang,Beach,0,5.4736,100.2447
+Penang National Park,Teluk Bahang,Penang,Nature,0,5.4517,100.1997
+ESCAPE Theme Park,Teluk Bahang,Penang,Theme Park,128,5.4494,100.2033
+Tropical Spice Garden,Teluk Bahang,Penang,Nature,27,5.4486,100.2131
+Penang War Museum,Batu Maung,Penang,Museum,25,5.2833,100.3006
+Clan Jetties,George Town,Penang,Cultural,0,5.4141,100.3439
+Cheong Fatt Tze Mansion,George Town,Penang,Cultural,25,5.4166,100.3372
+Langkawi Sky Bridge,Gunung Machinchang,Kedah,Adventure,55,6.3803,99.6608
+Langkawi Cable Car,Gunung Machinchang,Kedah,Adventure,85,6.38,99.66
+Underwater World Langkawi,Pantai Cenang,Kedah,Museum,53,6.2856,99.7286
+Alor Setar Tower,Alor Setar,Kedah,Landmark,5,6.1211,100.3672
+Paddy Museum,Alor Setar,Kedah,Museum,3,6.1856,100.3861
+Perlis State Park,Kaki Bukit,Perlis,Nature,0,6.6167,100.1833
+Gua Kelam,Kaki Bukit,Perlis,Nature,4,6.6167,100.1806
+Mount Kinabalu,Kundasang,Sabah,Nature,0,6.075,116.5583
+Kinabalu Park,Kundasang,Sabah,Nature,15,6.0833,116.55
+Sipadan Island,Semporna,Sabah,Beach,0,4.115,118.6285
+Sabah Tea Garden,Ranau,Sabah,Nature,10,5.9667,116.9
+Poring Hot Springs,Ranau,Sabah,Nature,15,6.05,116.7
+Sabah Museum,Kota Kinabalu,Sabah,Museum,15,5.9667,116.0833
+Signal Hill Observatory,Kota Kinabalu,Sabah,Landmark,0,5.9836,116.0764
+Tunku Abdul Rahman Marine Park,Kota Kinabalu,Sabah,Nature,10,6.0167,116.0167
+Mari Mari Cultural Village,Kota Kinabalu,Sabah,Cultural,190,6.0333,116.15
+Lok Kawi Wildlife Park,Kota Kinabalu,Sabah,Nature,20,5.8944,116.0028
+Bako National Park,Kuching,Sarawak,Nature,20,1.7167,110.4667
+Gunung Mulu National Park,Mulu,Sarawak,Nature,30,4.05,114.8167
+Sarawak Cultural Village,Santubong,Sarawak,Cultural,100,1.7461,110.3283
+Semenggoh Wildlife Centre,Kuching,Sarawak,Nature,10,1.4167,110.3167
+Kuching Waterfront,Kuching,Sarawak,Landmark,0,1.5595,110.3442
+Sarawak State Museum,Kuching,Sarawak,Museum,0,1.5589,110.3444
+Annah Rais Longhouse,Padawan,Sarawak,Cultural,10,1.2333,110.2
+Labuan Marine Park,Labuan,Labuan,Beach,0,5.2831,115.2308
+Labuan Bird Park,Labuan,Labuan,Nature,1,5.3167,115.2333
+Labuan Chimney,Labuan,Labuan,Landmark,0,5.2947,115.2436
