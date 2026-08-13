@@ -1,6 +1,26 @@
 [
     {
         "id": 1,
-        "city": "Kuala Lumpur"
+        "city": "Ampang",
+        "car": [
+            {
+                "brand": "Toyota",
+                "model": "Prius",
+                "segment": "Hatchback",
+                "price": 169.68
+            },
+            {
+                "brand": "Corvette",
+                "model": "C6",
+                "segment": "Sports",
+                "price": 607.6
+            },
+            {
+                "brand": "Fiat",
+                "model": "Fiorino",
+                "segment": "Van",
+                "price": 105.99
+            }
+        ]
     }
 ]
