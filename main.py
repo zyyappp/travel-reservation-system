@@ -1,11 +1,11 @@
 import subprocess
+from config import BASE_DIR, DATA_FOLDER, car_data, city_data
 import pandas as pd
 import datetime
-from selection_helper import select, search
-from login_helper import login_user, switch_accounts
-from config import DATA_FOLDER, car_data, city_data
+from helpers.selection_helper import select, search
+from helpers.login_helper import login_user, switch_accounts
 from user_class import User
-from reservation import switch_city, reserve_car
+from features.reservation import switch_city, reserve_car
 
 def menu_interface():
     user = login_user()

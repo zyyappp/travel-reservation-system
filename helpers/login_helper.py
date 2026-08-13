@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timedelta
 from config import LOGIN_PATH
 from user_class import User
-from selection_helper import select, search
+from helpers.selection_helper import select, search
 
 def load_login():
     with open(LOGIN_PATH, "r", encoding="utf-8") as f:

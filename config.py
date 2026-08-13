@@ -1,7 +1,9 @@
 from pathlib import Path
 import pandas as pd
+import os
 
 BASE_DIR = Path(__file__).parent
+os.chdir(BASE_DIR)
 
 LOGIN_PATH = BASE_DIR / "saves" / "login.json"
 RESERVES_PATH = BASE_DIR / "saves" / "reserves.json"

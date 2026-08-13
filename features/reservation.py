@@ -1,7 +1,9 @@
 import subprocess
-from config import DATA_FOLDER, RESERVES_PATH, city_data, car_data
+from config import BASE_DIR, DATA_FOLDER, RESERVES_PATH, city_data, car_data
 import pandas as pd
-from selection_helper import search, select
+import os
+os.chdir(BASE_DIR)
+from helpers.selection_helper import search, select
 from datetime import datetime, timedelta
 import json
 
