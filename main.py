@@ -2,14 +2,14 @@ import subprocess
 import pandas as pd
 import datetime
 from selection_helper import select, search
-from login_helper import login_user
+from login_helper import login_user, switch_accounts
 from config import DATA_FOLDER, car_data, city_data
 from user_class import User
 from reservation import switch_city, reserve_car
 
 def menu_interface():
     user = login_user()
-    menu_options = ["Hotels", "Flights", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Quit"]
+    menu_options = ["Hotels", "Flights", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Switch Accounts", "Quit"]
     menu = True
 
     redirect = {
@@ -20,7 +20,8 @@ def menu_interface():
         "Attractions" : None,
         "Payment" : None,
         "AI Suggestion" : None,
-        "Switch City" : switch_city
+        "Switch City" : switch_city,
+        "Switch Accounts" : switch_accounts
     }
     while menu:
         subprocess.run("cls", shell=True)
@@ -32,11 +33,15 @@ def menu_interface():
             break
         elif user_input not in redirect.keys():
             continue
-        elif user_input == "Switch City":
+        elif user_input == menu_options[-3]:
             user.city = switch_city(user.id)
             continue
-
-        redirect[user_input](user.id)
+        elif user_input == menu_options[-2]:
+            user = redirect[user_input](user.id)
+            continue
+        elif user_input == menu_options[3]:
+            redirect[user_input](user.id)
+            continue
         
 
 menu_interface()

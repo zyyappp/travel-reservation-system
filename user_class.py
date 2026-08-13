@@ -3,6 +3,7 @@ from config import DATA_FOLDER
 from selection_helper import search
 import pandas as pd
 from reservation import select_city
+
 class User:
     def __init__(self, id, user, password):
         self.id = id
@@ -10,7 +11,8 @@ class User:
         self.password = password
         self.city = select_city(id)
 
-
+def switch_accounts():
+    pass
 
 ###
 # reserves.json: 

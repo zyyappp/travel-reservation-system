@@ -5,6 +5,7 @@ import time
 from datetime import datetime, timedelta
 from config import LOGIN_PATH
 from user_class import User
+from selection_helper import select, search
 
 def load_login():
     with open(LOGIN_PATH, "r", encoding="utf-8") as f:
@@ -23,8 +24,8 @@ def register_user():
 
         username = input("Enter username >> ").strip()
 
-        if len(username) <=3:
-            print("Username must be greater than 3 in length")
+        if len(username) <3:
+            print("Username must be greater than 2 in length")
             continue
 
         if re.search(r"\s", username):
@@ -112,4 +113,34 @@ def login_user():
         latest_login["last_login"] = str(datetime.now())
         dump_login(login_data)
         return User(latest_login["id"], latest_login["user"], latest_login["password"])
-        
+
+
+def switch_accounts(id):
+    login_data = load_login()
+    login_type =  ["Login to existing account", "Add a new account"]
+    selection = select("--- Login ---", login_type)
+
+    if selection == login_type[0]:
+        exist_user = select("", [data["user"] for data in login_data])
+        for data in login_data:
+            if data["user"] == exist_user and data["id"] == id:
+                print(f"You are already logged as {exist_user}!")
+                data["last_login"] = str(datetime.now())
+                dump_login(login_data)
+                time.sleep(0.5)
+                return User(id, data["user"], data["password"])
+        valid = False
+        while not valid:
+            password = input(f"Enter password for {exist_user} >> ")
+
+            for data in login_data:
+                if data["user"] == exist_user and data["password"] == password:
+                    valid = True
+                    data["last_login"] = str(datetime.now())
+                    dump_login(login_data)
+                    return User(data["id"], data["user"], data["password"])
+
+            
+            print("Invalid password")
+    elif selection == login_type[1]:
+        return register_user()
