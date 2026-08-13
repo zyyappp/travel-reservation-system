@@ -3,7 +3,9 @@ import pandas as pd
 import datetime
 from selection_helper import select, search
 from login_helper import login_user
-from config import DATA_FOLDER
+from config import DATA_FOLDER, car_data, city_data
+from user_class import User
+from reservation import switch_city
 
 interface = f"""
 {"-" * 20}
@@ -16,23 +18,13 @@ interface = f"""
 7. Quit
 {"-" * 20}
             """
-
-def select_city():
-    city_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")
-    subprocess.run("cls", shell=True)
-    city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
-
-    return city
     
 
 
 def reserve_car():
-    car_data = pd.read_csv(DATA_FOLDER /"car_models.csv")
     subprocess.run("cls", shell=True)
 
     choice = select(f"{"-" * 20}\nCars\n{"-" * 20}", ["Full Criteria Search", "Based on Segment"])
-
-    city = select_city()
 
     if choice == "Full Criteria Search":
         # Full criteria includes brand, segment (specific)
@@ -79,30 +71,34 @@ Price : RM {car_price}
 
 
 def menu_interface():
+    user = login_user()
+    menu_options = ["Hotels", "Flights", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Quit"]
     menu = True
 
     redirect = {
-        "1" : None,
-        "2" : None,
-        "3" : None,
-        "4" : reserve_car,
-        "5" : None,
-        "6" : None
+        "Hotels" : None,
+        "Flights" : None,
+        "Trains" : None,
+        "Cars" : reserve_car,
+        "Attractions" : None,
+        "Payment" : None,
+        "AI Suggestion" : None,
+        "Switch City" : switch_city
     }
     while menu:
         subprocess.run("cls", shell=True)
-        print(interface)
-        user_input = input("Option >> ").strip()
+        print(f"Logged as {user.user}\nCity selected: {user.city}")
+        user_input = select("", menu_options)
 
-        if user_input == "7": 
+        if user_input == menu_options[-1]: 
             menu = False
             break
         elif user_input not in redirect.keys():
             continue
+        elif user_input == "Switch City":
+            return switch_city(user.id)
         
         return redirect[user_input]()
         
 
-
-login_user()
 menu_interface()

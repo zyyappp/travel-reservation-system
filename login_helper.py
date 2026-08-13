@@ -4,6 +4,7 @@ import subprocess
 import time
 from datetime import datetime, timedelta
 from config import LOGIN_PATH
+from user_class import User
 
 def load_login():
     with open(LOGIN_PATH, "r", encoding="utf-8") as f:
@@ -57,6 +58,7 @@ def register_user():
         password_valid = True
     
     data = {
+        "id" : len(login_data) + 1,
         "user" : username,
         "password" : password,
         "date_created" : str(datetime.now()),
@@ -65,13 +67,15 @@ def register_user():
     login_data.append(data)
     dump_login(login_data)
 
+    return User(data["id"], username, password)
+
 
 def login_user():
     login_data = load_login()
     if not login_data:
         print(f"{"-"*20}\nRegister\n{"-" * 20}")
-        register_user()
-        return True
+        return register_user()
+
     earliest_login = None
     for i, login in enumerate(login_data):
         now = datetime.now()
@@ -100,11 +104,12 @@ def login_user():
 
                     log["last_login"] = str(datetime.now())
                     dump_login(login_data)
-                    return success
+                    return User(log["id"], username, password)
             if not success:
                 print("Username or password entered is incorrect or does not exist.")
     else:
-        login_data[earliest_login]["last_login"] = str(datetime.now())
+        latest_login = login_data[earliest_login]
+        latest_login["last_login"] = str(datetime.now())
         dump_login(login_data)
-        return True
+        return User(latest_login["id"], latest_login["user"], latest_login["password"])
         
