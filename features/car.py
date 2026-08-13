@@ -1,50 +1,10 @@
 import subprocess
-from config import BASE_DIR, DATA_FOLDER, RESERVES_PATH, city_data, car_data
-import pandas as pd
-import os
-os.chdir(BASE_DIR)
+from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
+from config import car_data
 from datetime import datetime, timedelta
-import json
 
-def load_reserve():
-    with open(RESERVES_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def dump_reserve(info):
-    with open(RESERVES_PATH, "w", encoding="utf-8") as f:
-        json.dump(info, f, indent=4)
-
-
-def select_city(id):
-    reserve_data = load_reserve()
-    for data in reserve_data:
-        if data["id"] == id:
-            return data["city"]
-        
-    city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
-
-    reserve_data.append(
-        {
-                "id" : id,
-                "city" : city
-        }
-    )
-    dump_reserve(reserve_data)
-    return city
-
-def switch_city(id):
-    reserve_data = load_reserve()
-    for data in reserve_data:
-        if data["id"] == id:
-            city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
-            data["city"] = city
-
-            dump_reserve(reserve_data)
-            return city
-    return select_city(id)
-
-
+from features.payment import payment
 def reserve_car(id):
     subprocess.run("cls", shell=True)
 
@@ -152,7 +112,3 @@ Days : {no_of_days}
             return
         elif option == option[2]:
             quit()
-
-
-def payment(id):
-    pass

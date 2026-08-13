@@ -1,0 +1,2 @@
+def payment(id):
+    pass
