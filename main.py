@@ -19,7 +19,6 @@ def menu_interface():
         "Cars" : reserve_car,
         "Attractions" : None,
         "Payment" : None,
-        "AI Suggestion" : None,
         "Switch City" : switch_city,
         "Switch Accounts" : switch_accounts
     }
