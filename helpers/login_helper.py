@@ -46,6 +46,11 @@ def register_user(user_id = None, previous_page=None):
             print("Username must not include spaces")
             continue
 
+
+        if username in [data["user"] for data in load_login()]:
+            print("Username already exists")
+            continue
+
         user_valid = True
 
     while not password_valid:
@@ -186,7 +191,7 @@ def manage_accounts(user_id):
 
         if current_page == "register":
             current_page = "finished"
-            return register_user(user_id, switch_accounts)
+            return register_user(user_id, manage_accounts)
 
         if current_page == "delete":
             confirm_del = select(f"Confirm deletion of {account["user"]}?", ["Yes", "No"])
