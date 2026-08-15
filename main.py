@@ -1,6 +1,6 @@
 import subprocess
 from helpers.selection_helper import select, search
-from helpers.login_helper import login_user, switch_accounts
+from helpers.login_helper import login_user, manage_accounts
 from features.hotel import reserve_hotel
 from features.car import reserve_car
 from features.city import switch_city
@@ -19,7 +19,7 @@ def menu_interface():
         "Attractions" : reserve_attraction,
         "Payment" : None,
         "Switch City" : switch_city,
-        "Manage Accounts" : switch_accounts
+        "Manage Accounts" : manage_accounts
     }
     while menu:
         clear()

@@ -6,6 +6,7 @@ from config import LOGIN_PATH
 from user_class import User
 from helpers.selection_helper import select, search
 from helpers.cli_helper import clear
+from features import load_reserve, dump_reserve
 
 def load_login():
     with open(LOGIN_PATH, "r", encoding="utf-8") as f:
@@ -134,7 +135,7 @@ def login_user():
         return User(latest_login["id"], latest_login["user"], latest_login["password"])
 
 
-def switch_accounts(user_id):
+def manage_accounts(user_id):
 
     current_page = "login_selection"
     login_data = load_login()
@@ -144,7 +145,7 @@ def switch_accounts(user_id):
     )
 
     while current_page != "finished":
-        login_type =  ["Login to existing account", "Add a new account"]
+        login_type =  ["Login to existing account", "Add a new account", "Delete account"]
         selection = select("--- Login ---", login_type)
 
         if selection == "BACK":
@@ -180,7 +181,36 @@ def switch_accounts(user_id):
                 print("Invalid password")
         elif selection == login_type[1]:
             current_page = "register"
+        elif selection == login_type[2]:
+            current_page = "delete"
 
         if current_page == "register":
             current_page = "finished"
             return register_user(user_id, switch_accounts)
+
+        if current_page == "delete":
+            confirm_del = select(f"Confirm deletion of {account["user"]}?", ["Yes", "No"])
+
+            if confirm_del == "BACK":
+                current_page = "login_selection"
+                continue
+            elif confirm_del == "Yes":
+                current_page = "confirm_delete"
+
+            elif confirm_del == "No":
+                return User(user_id, account["user"], account["password"])
+
+        if current_page == "confirm_delete":
+            delete_password = input(f"Enter password for {account["user"]} >> ")
+
+            if delete_password.strip() == account["password"]:
+                reserve_data = load_reserve()
+                clear()
+                print(f"{account["user"]} deleted")
+                time.sleep(0.5)
+
+                reserve_data.remove(next(r for r in reserve_data if r["id"] == user_id))
+                login_data.remove(account)
+                dump_login(login_data)
+                dump_reserve(reserve_data)
+                return login_user()
