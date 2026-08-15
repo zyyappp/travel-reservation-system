@@ -20,7 +20,7 @@ def select_city(user_id):
         else:
             reserve_data.append(
                 {
-                        "id" : id,
+                        "id" : user_id,
                         "city" : city
                 }
             )
