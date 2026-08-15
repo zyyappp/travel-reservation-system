@@ -1,6 +1,6 @@
 from features import load_reserve, dump_reserve
-from helpers.selection_helper import search, select
-from config import city_data, car_data
+from helpers.selection_helper import search
+from config import hotel_data
 
 def select_city(user_id):
     current_page = "city_selection"
@@ -10,7 +10,7 @@ def select_city(user_id):
             return data["city"]
 
     while current_page != "finished":
-        city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
+        city = search("--- Cities ---", hotel_data["cityName"].drop_duplicates())
 
         if city == "BACK":
             continue
@@ -36,7 +36,7 @@ def switch_city(user_id):
 
             while current_page != "finished":
             
-                city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
+                city = search("--- Cities ---", hotel_data["cityName"].drop_duplicates())
 
                 if city == "BACK":
                     current_page = "finished"

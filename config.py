@@ -9,5 +9,5 @@ LOGIN_PATH = BASE_DIR / "saves" / "login.json"
 RESERVES_PATH = BASE_DIR / "saves" / "reserves.json"
 DATA_FOLDER = BASE_DIR / "data"
 
-city_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")
+hotel_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")
 car_data = pd.read_csv(DATA_FOLDER /"car_models.csv")

@@ -1,2 +1,2 @@
-def payment(id):
+def payment(user_id):
     pass

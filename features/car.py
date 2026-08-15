@@ -1,14 +1,12 @@
-import subprocess
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
 from config import car_data
 from datetime import datetime
 from features.payment import payment
-
-import time
+from helpers.cli_helper import clear
 
 def reserve_car(user_id):
-    subprocess.run("cls", shell=True)
+    clear()
     current_page = "full_or_segment"
     while current_page != "finished":
 
