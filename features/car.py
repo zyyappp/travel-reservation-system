@@ -21,9 +21,11 @@ def reserve_car(user_id):
 
             if choice == "Full Criteria Search":
                 # Full criteria includes brand, segment (specific)
+                method = "full"
                 current_page = "full_brands"
 
             elif choice == "Based on Segment":
+                method = "segment"
                 current_page = "segment"
 
         if current_page == "full_brands":                                            
@@ -90,8 +92,18 @@ def reserve_car(user_id):
             valid_date = False
             while not valid_date:
                 try:
-                    start = datetime.strptime(input("Enter start date (DD/MM/YYYY) >> "), "%d/%m/%Y").date()
-                    end = datetime.strptime(input("Enter end date (DD/MM/YYYY) >> "), "%d/%m/%Y").date()
+                    start_input = input("Enter start date (DD/MM/YYYY) >> ")
+                    end_input = input("Enter end date (DD/MM/YYYY) >> ")
+
+                    if start_input == "" or end_input == "": #Back
+                        
+                        if method == "full":
+                            current_page = "full_model"
+                        elif method == "segment":
+                            current_page = "select_car"
+                        break
+                    start = datetime.strptime(start_input, "%d/%m/%Y").date()
+                    end = datetime.strptime(end_input, "%d/%m/%Y").date()
 
                     if (datetime.now().date() - start).days > 0 or (datetime.now().date() - end).days > 0:
                         print("Reservation date cannot be before the current date.")
