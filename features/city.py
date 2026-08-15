@@ -2,30 +2,51 @@ from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
 from config import city_data, car_data
 
-def select_city(id):
+def select_city(user_id):
+    current_page = "city_selection"
     reserve_data = load_reserve()
     for data in reserve_data:
-        if data["id"] == id:
+        if data["id"] == user_id:
             return data["city"]
-        
-    city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
 
-    reserve_data.append(
-        {
-                "id" : id,
-                "city" : city
-        }
-    )
-    dump_reserve(reserve_data)
-    return city
+    while current_page != "finished":
+        city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
 
-def switch_city(id):
+        if city == "BACK":
+            continue
+        elif city is None:
+            print("City not found. Try again")
+            continue
+        else:
+            reserve_data.append(
+                {
+                        "id" : id,
+                        "city" : city
+                }
+            )
+            dump_reserve(reserve_data)
+            current_page = "finished"
+            return city
+
+def switch_city(user_id):
+    current_page = "switch_city"
     reserve_data = load_reserve()
     for data in reserve_data:
-        if data["id"] == id:
-            city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
-            data["city"] = city
+        if data["id"] == user_id:
 
-            dump_reserve(reserve_data)
-            return city
-    return select_city(id)
+            while current_page != "finished":
+            
+                city = search("--- Cities ---", city_data[" cityName"].drop_duplicates())
+
+                if city == "BACK":
+                    current_page = "finished"
+                    return data["city"]
+                elif city is None:
+                    print("City not found. Try again")
+                    continue
+                else:
+                    data["city"] = city
+
+                    dump_reserve(reserve_data)
+                    current_page = "finished"
+                    return city

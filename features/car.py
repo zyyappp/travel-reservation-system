@@ -7,7 +7,7 @@ from features.payment import payment
 
 import time
 
-def reserve_car(id):
+def reserve_car(user_id):
     subprocess.run("cls", shell=True)
     current_page = "full_or_segment"
     while current_page != "finished":
@@ -133,7 +133,7 @@ def reserve_car(id):
         reserve_data = load_reserve()
 
         for data in reserve_data:
-            if data["id"] == id:
+            if data["id"] == user_id:
                 if data.get("car") is None:
                     data["car"] = []
                         
@@ -152,7 +152,7 @@ def reserve_car(id):
         option = select("Enter option", options)
 
         if option == options[0]:
-            return payment(id)
+            return payment(user_id)
         elif option == options[1]:
             return
         elif option == option[2]:

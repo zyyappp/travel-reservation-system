@@ -1,11 +1,11 @@
 import json
 import re
-import subprocess
 import time
 from datetime import datetime, timedelta
 from config import LOGIN_PATH
 from user_class import User
 from helpers.selection_helper import select, search
+from helpers.cli_helper import clear
 
 def load_login():
     with open(LOGIN_PATH, "r", encoding="utf-8") as f:
@@ -16,26 +16,45 @@ def dump_login(info):
         json.dump(info, f, indent=4)
 
 
-def register_user():
+def register_user(user_id = None, previous_page=None):
+    clear()
+    print(f"""
+{'─' * 60}
+                       CREATE ACCOUNT
+{'─' * 60}
+""")
     login_data = load_login()
     user_valid = False
     password_valid = False
     while not user_valid:
 
-        username = input("Enter username >> ").strip()
+        username = input("Enter username >> ")
 
-        if len(username) <3:
+        if username == "":
+
+            if previous_page is None:
+                continue
+            else:
+                return previous_page(user_id)
+
+        elif len(username) <3:
             print("Username must be greater than 2 in length")
             continue
 
-        if re.search(r"\s", username):
+        elif re.search(r"\s", username):
             print("Username must not include spaces")
             continue
 
         user_valid = True
 
     while not password_valid:
-        password = input("Enter password >> ").strip()
+        password = input("Enter password >> ")
+
+        if password == "":
+            if previous_page is None:
+                continue
+            else:
+                return previous_page(user_id)
 
         if len(password) <= 3:
             print("Password must be greater than 3 in length")
@@ -92,7 +111,7 @@ def login_user():
 
     if earliest_login is None:
         #login
-        subprocess.run("cls", shell=True)
+        clear()
         success = False
         print(f"{"-"*20}\nLogin\n{"-" * 20}")
         while not success:
@@ -115,32 +134,53 @@ def login_user():
         return User(latest_login["id"], latest_login["user"], latest_login["password"])
 
 
-def switch_accounts(id):
-    login_data = load_login()
-    login_type =  ["Login to existing account", "Add a new account"]
-    selection = select("--- Login ---", login_type)
+def switch_accounts(user_id):
 
-    if selection == login_type[0]:
-        exist_user = select("", [data["user"] for data in login_data])
-        for data in login_data:
-            if data["user"] == exist_user and data["id"] == id:
+    current_page = "login_selection"
+    login_data = load_login()
+
+    account = next(
+        data for data in login_data if data["id"] == user_id
+    )
+
+    while current_page != "finished":
+        login_type =  ["Login to existing account", "Add a new account"]
+        selection = select("--- Login ---", login_type)
+
+        if selection == "BACK":
+            current_page = "finished"
+            return User(user_id, account["user"], account["password"])
+
+        if selection == login_type[0]:
+            current_page = "login_existing"
+
+        if current_page == "login_existing":
+            exist_user = select("", [data["user"] for data in login_data])
+            if exist_user == "BACK":
+                current_page = "login_selection"
+            elif exist_user == account["user"]:
                 print(f"You are already logged as {exist_user}!")
-                data["last_login"] = str(datetime.now())
+                account["last_login"] = str(datetime.now())
                 dump_login(login_data)
                 time.sleep(0.5)
-                return User(id, data["user"], data["password"])
-        valid = False
-        while not valid:
-            password = input(f"Enter password for {exist_user} >> ")
+                return User(user_id, account["user"], account["password"])
+            else:
+                valid = False
+                while not valid:
+                    password = input(f"Enter password for {exist_user} >> ")
 
-            for data in login_data:
-                if data["user"] == exist_user and data["password"] == password:
-                    valid = True
-                    data["last_login"] = str(datetime.now())
-                    dump_login(login_data)
-                    return User(data["id"], data["user"], data["password"])
+                    for data in login_data:
+                        if data["user"] == exist_user and data["password"] == password:
+                            valid = True
+                            data["last_login"] = str(datetime.now())
+                            dump_login(login_data)
+                            return User(data["id"], data["user"], data["password"])
 
-            
-            print("Invalid password")
-    elif selection == login_type[1]:
-        return register_user()
+                
+                print("Invalid password")
+        elif selection == login_type[1]:
+            current_page = "register"
+
+        if current_page == "register":
+            current_page = "finished"
+            return register_user(user_id, switch_accounts)

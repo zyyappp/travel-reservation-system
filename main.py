@@ -3,6 +3,7 @@ from helpers.selection_helper import select, search
 from helpers.login_helper import login_user, switch_accounts
 from features.car import reserve_car
 from features.city import switch_city
+from helpers.cli_helper import clear
 
 def menu_interface():
     user = login_user()
@@ -19,7 +20,7 @@ def menu_interface():
         "Switch Accounts" : switch_accounts
     }
     while menu:
-        subprocess.run("cls", shell=True)
+        clear()
         print(f"Logged as {user.user}\nCity selected: {user.city}")
         user_input = select("", menu_options)
 
