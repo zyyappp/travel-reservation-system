@@ -3,6 +3,7 @@ from helpers.selection_helper import search, select
 from config import hotel_data
 from helpers.cli_helper import clear
 import json
+import time
 
 def rating(HotelRating):
 
@@ -88,6 +89,7 @@ def reserve_hotel(user_id):
 
             elif not no_of_rooms.isdigit():
                 print("Must be an integer.")
+                time.sleep(0.5)
                 continue
             else:
                 pass #booking

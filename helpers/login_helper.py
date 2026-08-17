@@ -36,6 +36,7 @@ def register_user(user_id = None, previous_page=None):
             if previous_page is None:
                 continue
             else:
+                clear()
                 return previous_page(user_id)
 
         elif len(username) <3:
@@ -96,7 +97,7 @@ def register_user(user_id = None, previous_page=None):
     return User(data["id"], username, password)
 
 
-def login_user():
+def login_user(user_id = None):
     login_data = load_login()
     if not login_data:
         print(f"{"-"*20}\nRegister\n{"-" * 20}")
@@ -118,21 +119,43 @@ def login_user():
     if earliest_login is None:
         #login
         clear()
-        success = False
-        print(f"{"-"*20}\nLogin\n{"-" * 20}")
-        while not success:
-            username = input("Enter username >> ")
-            password = input("Enter password >> ")
+        current_page = "reg_or_login"
 
-            for log in login_data:
-                if log["user"] == username and log["password"] == password:
-                    success = True
+        while current_page != "finished":
 
-                    log["last_login"] = str(datetime.now())
-                    dump_login(login_data)
-                    return User(log["id"], username, password)
-            if not success:
-                print("Username or password entered is incorrect or does not exist.")
+            if current_page == "reg_or_login":
+                clear()
+                reg_or_login = select("Register or Login", ["Login to existing account", "Register a new account"])
+
+
+                if reg_or_login == "BACK":
+                    current_page = "reg_or_login"
+                if reg_or_login == "Register a new account":
+                    current_page = "finished"
+                    return register_user(previous_page=login_user)
+                if reg_or_login == "Login to existing account":
+                    current_page = "login"
+
+            if current_page == "login":
+                print(f"{"-"*20}\nLogin\n{"-" * 20}")
+                username = input("Enter username >> ")
+                password = input("Enter password >> ")
+
+                if not username:
+                    current_page = "reg_or_login"
+                    continue
+
+                for log in login_data:
+                    if log["user"] == username and log["password"] == password:
+                        current_page = "finished"
+
+                        log["last_login"] = str(datetime.now())
+                        dump_login(login_data)
+                        return User(log["id"], username, password)
+                print("Invalid username or password.")
+                time.sleep(0.5)
+                
+
     else:
         latest_login = login_data[earliest_login]
         latest_login["last_login"] = str(datetime.now())

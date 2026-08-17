@@ -9,7 +9,7 @@ from helpers.cli_helper import clear
 
 def menu_interface():
     user = login_user()
-    menu_options = ["Hotels", "Trains", "Cars", "Attractions", "Payment", "AI Suggestion", "Switch City", "Manage Accounts", "Quit"]
+    menu_options = ["Hotels", "Trains", "Cars", "Attractions", "Payment", "Switch City", "Manage Accounts", "Quit"]
     menu = True
 
     redirect = {
@@ -37,7 +37,7 @@ def menu_interface():
         elif user_input == menu_options[-2]:
             user = redirect[user_input](user.id)
             continue
-        else:
+        elif redirect[user_input] is not None:
             redirect[user_input](user.id)
             continue
         
