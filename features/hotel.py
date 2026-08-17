@@ -4,6 +4,8 @@ from config import hotel_data
 from helpers.cli_helper import clear
 import json
 import time
+from features.payment import payment
+from datetime import datetime, timedelta
 
 def rating(HotelRating):
 
@@ -78,20 +80,94 @@ def reserve_hotel(user_id):
 
             elif confirm_reserve == "View full details":
                 print("----")
+                #insert full details code
             elif confirm_reserve == "Confirm Reservation":
                 current_page = "confirm"
 
         if current_page == "confirm":
+            clear()
             no_of_rooms = input("How many rooms to book?\nYou are only able to book at most 10 rooms at once.\n >> ")
 
             if not no_of_rooms:
                 current_page = "finished"
+                return
 
             elif not no_of_rooms.isdigit():
                 print("Must be an integer.")
                 time.sleep(0.5)
                 continue
+            elif int(no_of_rooms) > 10:
+                print("Number of rooms exceeded maximum limit.")
+                time.sleep(0.5)
+                continue
             else:
-                pass #booking
+                no_of_rooms = int(no_of_rooms)
+                current_page = "date"
 
-    
+
+        if current_page == "date":
+            valid_date = False
+            print(f"""
+            {'─' * 60}
+                                HOTEL RESERVATION PERIOD
+            {'─' * 60}
+            """)
+            while not valid_date:
+                try:
+                    start_input = input("Enter start date (DD/MM/YYYY) >> ")
+                    end_input = input("Enter end date (DD/MM/YYYY) >> ")
+
+                    if start_input == "" or end_input == "": #Back
+                        current_page = "confirm"
+                        valid_date = True
+                        continue
+                    start = datetime.strptime(start_input, "%d/%m/%Y").date()
+                    end = datetime.strptime(end_input, "%d/%m/%Y").date()
+
+                    if (datetime.now().date() - start).days > 0 or (datetime.now().date() - end).days > 0:
+                        print("Reservation date cannot be before the current date.")
+                        continue    
+                except ValueError:
+                    print("Invalid date. Try again.")
+                    continue
+
+                nights = (end - start).days 
+
+                if nights < 0:
+                    print("End date cannot be earlier than the start date.")
+                    continue
+                elif nights == 0:
+                    print("Night difference cannot be 0")
+                    continue
+                else:
+                    valid_date = True
+                    current_page = "finished"
+    net_total = no_of_rooms * hotel_details["price"]
+    reserve_details = f"""
+    Hotel: {hotel_details["HotelName"]}
+    Nights : {nights}
+    Rooms : {no_of_rooms}
+    Price per room : {hotel_details["price"]}
+    Net total: RM {net_total}
+"""
+
+    print(reserve_details)
+    account["hotel"].append(
+        {
+            "name" : hotel_details["HotelName"],
+            "nights" : int(nights),
+            "rooms" : int(no_of_rooms),
+            "price_per_room" : float(hotel_details["price"]),
+            "net_total" : float(net_total)
+        }
+    )
+    dump_reserve(user_data)
+    options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
+    option = select("Enter option", options)
+
+    if option == options[0]:
+        return payment(user_id)
+    elif option == options[1]:
+        return
+    elif option == option[2]:
+        quit()
