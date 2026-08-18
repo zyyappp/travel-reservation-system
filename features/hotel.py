@@ -167,6 +167,7 @@ def reserve_hotel(user_id):
     account["hotel"].append(
         {
             "name" : hotel_details["HotelName"],
+            "rating" : len(rating(hotel_details["HotelRating"])),
             "nights" : int(nights),
             "room_type" : selected_room_type,
             "rooms" : int(num_rooms),
