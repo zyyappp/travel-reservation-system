@@ -129,7 +129,7 @@ def reserve_hotel(user_id):
                     if start_input == "" or end_input == "": #Back
                         current_page = "continue"
                         valid_date = True
-                        continue
+                        break
                     start = datetime.strptime(start_input, "%d/%m/%Y").date()
                     end = datetime.strptime(end_input, "%d/%m/%Y").date()
 
@@ -153,7 +153,7 @@ def reserve_hotel(user_id):
                     current_page = "finished"
 
     guest_multiplier = 0.364 * math.log(room_list.index(room_type)+1) + 1
-    net_total = round(guest_multiplier * hotel_details["price"] * num_rooms,2)
+    net_total = round(guest_multiplier * hotel_details["price"] * num_rooms * nights ,2) 
     reserve_details = f"""
     Hotel: {hotel_details["HotelName"]}
     Nights : {nights}
