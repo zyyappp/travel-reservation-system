@@ -6,6 +6,8 @@ import json
 import time
 from features.payment import payment
 from datetime import datetime, timedelta
+import math
+import pandas as pd
 
 def rating(HotelRating):
 
@@ -50,8 +52,8 @@ def reserve_hotel(user_id):
 
             if hotel == "BACK":
                 current_page = "finished"
-            else:
-
+                return
+            elif hotel is not None:
                 choice_index = choices.index(hotel)
 
                 hotel_details = specific_hotel_data.iloc[choice_index]
@@ -73,7 +75,7 @@ def reserve_hotel(user_id):
                 current_page = "confirm_reservation"
 
         if current_page == "confirm_reservation":
-            confirm_reserve = select("Confirm reservation or learn more", ["View full details", "Confirm Reservation"])
+            confirm_reserve = select("Confirm reservation or learn more", ["Continue", "View full details"])
 
             if confirm_reserve == "BACK":
                 current_page = "hotel_selection"
@@ -81,28 +83,35 @@ def reserve_hotel(user_id):
             elif confirm_reserve == "View full details":
                 print("----")
                 #insert full details code
-            elif confirm_reserve == "Confirm Reservation":
-                current_page = "confirm"
+            elif confirm_reserve == "Continue":
+                current_page = "continue"
 
-        if current_page == "confirm":
+        if current_page == "continue":
             clear()
-            no_of_rooms = input("How many rooms to book?\nYou are only able to book at most 10 rooms at once.\n >> ")
+            room_list = ["Single Room", "Double Room", "Triple Room", "Family Room"]
+            room_type = select("Select room type", room_list) #family room means 4 person
 
-            if not no_of_rooms:
-                current_page = "finished"
-                return
-
-            elif not no_of_rooms.isdigit():
-                print("Must be an integer.")
-                time.sleep(0.5)
-                continue
-            elif int(no_of_rooms) > 10:
-                print("Number of rooms exceeded maximum limit.")
-                time.sleep(0.5)
-                continue
+            if room_type == "BACK":
+                current_page = "confirm_reservation"
             else:
-                no_of_rooms = int(no_of_rooms)
+
+                selected_room_type = room_type.lower().split()[0]
+                current_page = "num_rooms"
+
+        if current_page == "num_rooms":
+            num_rooms = input(f"Enter the number of rooms to reserve for {room_type} (Maximum capacity of {hotel_details["max_rooms"]}) >> ").strip()
+
+            if not num_rooms:
+                current_page = "continue"
+            elif not num_rooms.isdigit() or not int(num_rooms):
+                print("Number of rooms must be an integer and not zero.")
+            elif int(num_rooms) > hotel_details["max_rooms"]:
+                print("Number of rooms cannot exceed the hotel's maximum room capacity.")
+            elif num_rooms.isdigit():
+                num_rooms = int(num_rooms)
+
                 current_page = "date"
+
 
 
         if current_page == "date":
@@ -118,7 +127,7 @@ def reserve_hotel(user_id):
                     end_input = input("Enter end date (DD/MM/YYYY) >> ")
 
                     if start_input == "" or end_input == "": #Back
-                        current_page = "confirm"
+                        current_page = "continue"
                         valid_date = True
                         continue
                     start = datetime.strptime(start_input, "%d/%m/%Y").date()
@@ -142,12 +151,15 @@ def reserve_hotel(user_id):
                 else:
                     valid_date = True
                     current_page = "finished"
-    net_total = no_of_rooms * hotel_details["price"]
+
+    guest_multiplier = 0.364 * math.log(room_list.index(room_type)+1) + 1
+    net_total = round(guest_multiplier * hotel_details["price"] * num_rooms,2)
     reserve_details = f"""
     Hotel: {hotel_details["HotelName"]}
     Nights : {nights}
-    Rooms : {no_of_rooms}
-    Price per room : {hotel_details["price"]}
+    Room type: {selected_room_type}
+    Rooms: {num_rooms}
+    Price per single room : {hotel_details["price"]}
     Net total: RM {net_total}
 """
 
@@ -156,8 +168,9 @@ def reserve_hotel(user_id):
         {
             "name" : hotel_details["HotelName"],
             "nights" : int(nights),
-            "rooms" : int(no_of_rooms),
-            "price_per_room" : float(hotel_details["price"]),
+            "room_type" : selected_room_type,
+            "rooms" : int(num_rooms),
+            "base_price" : float(hotel_details["price"]),
             "net_total" : float(net_total)
         }
     )
