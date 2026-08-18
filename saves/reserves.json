@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "id": 1,
+        "city": "Bandar Baru Bangi",
+        "hotel": [
+            {
+                "name": "Hotel Bangi Putrajaya",
+                "nights": 1,
+                "rooms": 2,
+                "price_per_room": 567.0,
+                "net_total": 1134.0
+            }
+        ],
+        "car": [
+            {
+                "brand": "Abarth",
+                "model": "124 Spider",
+                "segment": "Convertible",
+                "price": 300.77,
+                "start_date": "2026-08-18",
+                "end_date": "2026-08-20",
+                "days": 2
+            }
+        ]
+    }
+]

@@ -31,8 +31,8 @@ def reserve_car(user_id):
 
             if brand == "BACK":
                 current_page = "full_or_segment"
-                        
-            else : current_page = "full_segment"
+        
+            elif brand is not None : current_page = "full_segment"
 
         if current_page == "full_segment":
             segment = search(f"--- Segments for {brand} ---", car_data[car_data["Maker"] == brand]["Segment"].drop_duplicates())
@@ -40,7 +40,7 @@ def reserve_car(user_id):
             if segment == "BACK":
                 current_page = "full_brands"
                         
-            else:
+            elif segment is not None:
                 current_page = "full_model"
 
         if current_page == "full_model":
@@ -49,7 +49,7 @@ def reserve_car(user_id):
             if car_model == "BACK":
                 current_page = "full_segment"
                         
-            else:
+            elif car_model is not None:
                 car_price = float(car_data[(car_data["Maker"] == brand) & (car_data["Segment"] == segment) & (car_data["Genmodel"] == car_model)]["Rental_price"].to_list()[0])
                 current_page = "date"
 
@@ -59,7 +59,7 @@ def reserve_car(user_id):
 
             if segment == "BACK":
                 current_page = "full_or_segment"
-            else:
+            elif segment is not None:
                 current_page = "select_car"
 
         if current_page == "select_car":
