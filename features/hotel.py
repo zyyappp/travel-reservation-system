@@ -5,10 +5,9 @@ from helpers.cli_helper import clear
 import json
 from textwrap import dedent
 from features.payment import payment
-from datetime import datetime, timedelta
+from datetime import datetime
 import math
-import pandas as pd
-from helpers.availability_helper import initialize_availability, load_availability, dump_availability
+from helpers.availability_helper import initialize_availability, dump_availability
 
 def rating(HotelRating):
 

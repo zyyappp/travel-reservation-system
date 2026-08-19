@@ -4,7 +4,7 @@ import time
 from datetime import datetime, timedelta
 from config import LOGIN_PATH
 from user_class import User
-from helpers.selection_helper import select, search
+from helpers.selection_helper import select
 from helpers.cli_helper import clear
 from features import load_reserve, dump_reserve
 

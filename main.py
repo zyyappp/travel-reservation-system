@@ -1,5 +1,4 @@
-import subprocess
-from helpers.selection_helper import select, search
+from helpers.selection_helper import select
 from helpers.login_helper import login_user, manage_accounts
 from features.hotel import reserve_hotel
 from features.car import reserve_car

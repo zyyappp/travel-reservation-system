@@ -6,7 +6,7 @@ def select(message, choices, height = 10):
     prompt = inquirer.select(
             message=message,
             choices=choices,
-            height=height,
+            max_height=height,
         )
 
     @prompt.register_kb("escape")
@@ -22,7 +22,7 @@ def search(message, choices, height = 10):
     prompt = inquirer.fuzzy(
             message=message,
             choices=choices,
-            height=height,
+            max_height=height,
         )
 
     @prompt.register_kb("escape")

@@ -12,3 +12,4 @@ DATA_FOLDER = BASE_DIR / "data"
 
 hotel_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")
 car_data = pd.read_csv(DATA_FOLDER /"car_models.csv")
+attraction_data = pd.read_csv(DATA_FOLDER / "malaysia_attractions.csv")
