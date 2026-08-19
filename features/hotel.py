@@ -8,6 +8,7 @@ from features.payment import payment
 from datetime import datetime, timedelta
 import math
 import pandas as pd
+from helpers.availability_helper import initialize_availability, load_availability, dump_availability
 
 def rating(HotelRating):
 
@@ -21,6 +22,7 @@ def reserve_hotel(user_id):
 
     current_page = "hotel_selection"
     user_data = load_reserve()
+    availability = initialize_availability()
 
     account = next(
         data for data in user_data if data["id"] == user_id
@@ -38,7 +40,7 @@ def reserve_hotel(user_id):
     {'─' * 60}
     """
 
-    print(heading)
+
 
     choices = [
         (f"{i+1}. {data["HotelName"]} | RM {data["price"]:.2f}")
@@ -48,6 +50,7 @@ def reserve_hotel(user_id):
     while current_page != "finished":
 
         if current_page == "hotel_selection":
+            print(heading)
             hotel = search("", choices, 10)
 
             if hotel == "BACK":
@@ -57,22 +60,29 @@ def reserve_hotel(user_id):
                 choice_index = choices.index(hotel)
 
                 hotel_details = specific_hotel_data.iloc[choice_index]
+                hotel_name = hotel_details["HotelName"]
 
-                details = f"""
-                {'─' * 60}
-                Hotel: {hotel_details["HotelName"]}
-                Rating: {rating(hotel_details["HotelRating"])}
-                Location: {hotel_details["Address"]}
-                Description : {json.loads(hotel_details["Description"])[0][:-1]}
-                Facilities: {json.loads(hotel_details["HotelFacilities"])[:4]}
-                Fax: {hotel_details["FaxNumber"]}
-                Website: {hotel_details["HotelWebsiteUrl"]}
+                if availability[hotel_name] == 0:
+                    clear()
+                    print("Oops! It seems that the hotel you were looking for is fully booked. We are sorry for the inconvenience.")
+                    input()
+                else:
 
-                {'─' * 60}
-                """
+                    details = f"""
+                    {'─' * 60}
+                    Hotel: {hotel_details["HotelName"]}
+                    Rating: {rating(hotel_details["HotelRating"])}
+                    Location: {hotel_details["Address"]}
+                    Description : {json.loads(hotel_details["Description"])[0][:-1]}
+                    Facilities: {json.loads(hotel_details["HotelFacilities"])[:4]}
+                    Fax: {hotel_details["FaxNumber"]}
+                    Website: {hotel_details["HotelWebsiteUrl"]}
 
-                print(details)
-                current_page = "confirm_reservation"
+                    {'─' * 60}
+                    """
+
+                    print(details)
+                    current_page = "confirm_reservation"
 
         if current_page == "confirm_reservation":
             confirm_reserve = select("Confirm reservation or learn more", ["Continue", "View full details"])
@@ -99,15 +109,23 @@ def reserve_hotel(user_id):
                 current_page = "num_rooms"
 
         if current_page == "num_rooms":
-            num_rooms = input(f"Enter the number of rooms to reserve for {room_type} (Maximum capacity of {hotel_details["max_rooms"]}) >> ").strip()
+        
+            num_rooms = input(f"Enter the number of rooms to reserve for {room_type} (Available rooms: {availability[hotel_name]}) >> ").strip()
 
             if not num_rooms:
                 current_page = "continue"
             elif not num_rooms.isdigit() or not int(num_rooms):
                 print("Number of rooms must be an integer and not zero.")
-            elif int(num_rooms) > hotel_details["max_rooms"]:
+            elif int(num_rooms) > availability[hotel_name]:
                 print("Number of rooms cannot exceed the hotel's maximum room capacity.")
             elif num_rooms.isdigit():
+                if int(num_rooms) > 7:
+                    confirmation = select(f"Are you sure you want to reserve {num_rooms} rooms?", ["Yes", "No"])
+
+                    if confirmation == "No" or confirmation == "BACK":
+                        continue
+
+
                 num_rooms = int(num_rooms)
 
                 current_page = "date"
@@ -168,6 +186,8 @@ def reserve_hotel(user_id):
         {
             "name" : hotel_details["HotelName"],
             "rating" : len(rating(hotel_details["HotelRating"])),
+            "start" : start_input,
+            "end" : end_input,
             "nights" : int(nights),
             "room_type" : selected_room_type,
             "rooms" : int(num_rooms),
@@ -175,6 +195,8 @@ def reserve_hotel(user_id):
             "net_total" : float(net_total)
         }
     )
+    availability[hotel_name] -= num_rooms
+    dump_availability(availability)
     dump_reserve(user_data)
     options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
     option = select("Enter option", options)
@@ -183,5 +205,5 @@ def reserve_hotel(user_id):
         return payment(user_id)
     elif option == options[1]:
         return
-    elif option == option[2]:
+    elif option == options[2]:
         quit()
