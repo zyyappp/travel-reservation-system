@@ -154,7 +154,8 @@ def reserve_car(user_id):
                     "price" : car_price,
                     "start_date" : str(start),
                     "end_date" : str(end),
-                    "days" : no_of_days
+                    "days" : no_of_days,
+                    "paid" : False
                 })
 
         dump_reserve(reserve_data)

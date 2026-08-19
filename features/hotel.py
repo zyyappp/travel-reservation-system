@@ -3,7 +3,7 @@ from helpers.selection_helper import search, select
 from config import hotel_data
 from helpers.cli_helper import clear
 import json
-import time
+from textwrap import dedent
 from features.payment import payment
 from datetime import datetime, timedelta
 import math
@@ -14,8 +14,8 @@ def rating(HotelRating):
 
     ratings = ["one", "two", "three", "four", "five"]
 
-    stars = (ratings.index(HotelRating.lower()[:-4]) + 1) # Since "S" in Star from any OneStar, TwoStar, ThreeStar, is at index -4, we can just slice it till the letter before 's' (+1 due to index starting at 0)
-    return "⋆" * stars
+     # Since "S" in Star from any OneStar, TwoStar, ThreeStar, is at index -4, we can just slice it till the letter before 's' (+1 due to index starting at 0)
+    return "★" * (ratings.index(HotelRating.lower()[:-4]) + 1) if HotelRating.lower()[:-4] in ratings else "N/A"
 
 def reserve_hotel(user_id):
     clear()
@@ -43,7 +43,7 @@ def reserve_hotel(user_id):
 
 
     choices = [
-        (f"{i+1}. {data["HotelName"]} | RM {data["price"]:.2f}")
+        (f"{i+1}. {data["HotelName"]} | {rating(data["HotelRating"])} | RM {data["price"]:.2f}")
         for i, data in specific_hotel_data.iterrows()
     ]  
 
@@ -61,38 +61,76 @@ def reserve_hotel(user_id):
 
                 hotel_details = specific_hotel_data.iloc[choice_index]
                 hotel_name = hotel_details["HotelName"]
+                hotel_rating = rating(hotel_details["HotelRating"])
+                hotel_address = hotel_details["Address"]
+                hotel_desc = json.loads(hotel_details["Description"])
+                hotel_facilities = json.loads(hotel_details["HotelFacilities"])
+                hotel_price = hotel_details["price"]
+                hotel_fax = hotel_details["FaxNumber"]
+                hotel_phone = hotel_details["PhoneNumber"]
+                hotel_website = hotel_details["HotelWebsiteUrl"]
 
                 if availability[hotel_name] == 0:
                     clear()
                     print("Oops! It seems that the hotel you were looking for is fully booked. We are sorry for the inconvenience.")
                     input()
                 else:
-
-                    details = f"""
-                    {'─' * 60}
-                    Hotel: {hotel_details["HotelName"]}
-                    Rating: {rating(hotel_details["HotelRating"])}
-                    Location: {hotel_details["Address"]}
-                    Description : {json.loads(hotel_details["Description"])[0][:-1]}
-                    Facilities: {json.loads(hotel_details["HotelFacilities"])[:4]}
-                    Fax: {hotel_details["FaxNumber"]}
-                    Website: {hotel_details["HotelWebsiteUrl"]}
-
-                    {'─' * 60}
-                    """
-
-                    print(details)
                     current_page = "confirm_reservation"
 
         if current_page == "confirm_reservation":
-            confirm_reserve = select("Confirm reservation or learn more", ["Continue", "View full details"])
+            clear()
+            details = dedent(f"""
+{'─' * 60}
+{hotel_name}
+{'─' * 60}
+{hotel_rating}
+
+📍 {hotel_address}
+
+{hotel_desc[0][:-1]}
+
+Facilities:
+{" • ".join(hotel_facilities[:4])}
+
+From RM {hotel_price:.2f} per night
+
+{'─' * 60}
+                    """).strip()
+
+            print(details)
+            confirm_reserve = select("", ["Continue", "View full details"])
 
             if confirm_reserve == "BACK":
                 current_page = "hotel_selection"
 
             elif confirm_reserve == "View full details":
-                print("----")
-                #insert full details code
+                clear()
+                full_details = dedent(f"""
+{'─' * 60}
+HOTEL DETAILS
+{'─' * 60}
+{hotel_name}
+{hotel_rating}
+
+LOCATION
+{hotel_address}
+                
+ABOUT
+{"\n".join(hotel_desc[:2])}
+
+FACILITIES
+{"• " + "\n• ".join(hotel_facilities[:10])}
+
+CONTACT
+Fax: {hotel_fax}
+Phone: {hotel_phone}
+Website: {hotel_website}
+
+PRICE
+Base price: RM {hotel_price:.2f} / night
+                """).strip()
+                print(full_details)
+                input(">> ")
             elif confirm_reserve == "Continue":
                 current_page = "continue"
 
@@ -177,8 +215,8 @@ def reserve_hotel(user_id):
     Nights : {nights}
     Room type: {selected_room_type}
     Rooms: {num_rooms}
-    Price per single room : {hotel_details["price"]}
-    Net total: RM {net_total}
+    Price per single room : RM {hotel_details["price"]:.2f}
+    Net total: RM {net_total:.2f}
 """
 
     print(reserve_details)
@@ -192,7 +230,8 @@ def reserve_hotel(user_id):
             "room_type" : selected_room_type,
             "rooms" : int(num_rooms),
             "base_price" : float(hotel_details["price"]),
-            "net_total" : float(net_total)
+            "net_total" : float(net_total),
+            "paid" : False
         }
     )
     availability[hotel_name] -= num_rooms
