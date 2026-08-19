@@ -41,7 +41,7 @@ HOTELS IN {account["city"].upper()}
 {'─' * 60}
     """
 
-    user_hotel = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
+    city_hotels = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
     user_filter = "Default"
 
     while current_page != "finished":
@@ -67,7 +67,7 @@ Filter: {user_filter}
             elif browse_or_sort == browse_selection[1]:
                 current_page = "change_filters"
             elif browse_or_sort == browse_selection[2]:
-                user_hotel = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
+                city_hotels = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
                 user_filter = "Default"
 
         if current_page == "change_filters":
@@ -80,24 +80,24 @@ Filter: {user_filter}
                 current_page = "hotel_search"
                 continue
             elif user_filter == filter_choices[0]:
-                user_hotel = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
+                city_hotels = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
             elif user_filter == filter_choices[1]:
-                user_hotel = user_hotel.sort_values("price").reset_index(drop=True)
+                city_hotels = city_hotels.sort_values("price").reset_index(drop=True)
             elif user_filter == filter_choices[2]:
-                user_hotel = user_hotel.sort_values("price", ascending = False).reset_index(drop=True)
+                city_hotels = city_hotels.sort_values("price", ascending = False).reset_index(drop=True)
             elif user_filter == filter_choices[3]:
-                user_hotel = user_hotel.sort_values(
+                city_hotels = city_hotels.sort_values(
                     by = "HotelRating",
                     key = lambda series: series.map(lambda r : len(rating(r)) if rating(r) != "N/A" else 0), # series = whole HotelRating series -> (each value mapped to r) -> passed to function
                 ).reset_index(drop = True)
             elif user_filter == filter_choices[4]:
-                user_hotel = user_hotel.sort_values(
+                city_hotels = city_hotels.sort_values(
                     by = "HotelRating",
                     key = lambda series: series.map(lambda r : len(rating(r)) if rating(r) != "N/A" else 0) ,
                     ascending = False
                 ).reset_index(drop = True)
             elif user_filter == filter_choices[5]:
-                user_hotel = user_hotel.sort_values("HotelName").reset_index(drop = True)
+                city_hotels = city_hotels.sort_values("HotelName").reset_index(drop = True)
 
             current_page = "hotel_search"
 
@@ -105,7 +105,7 @@ Filter: {user_filter}
         if current_page == "hotel_selection":
             choices = [
         (f"{i+1}. {data["HotelName"]} | {rating(data["HotelRating"])} | RM {data["price"]:.2f}")
-        for i, data in user_hotel.iterrows()
+        for i, data in city_hotels.iterrows()
                         ]  
             clear()
             print(heading)
@@ -118,7 +118,7 @@ Filter: {user_filter}
             elif hotel is not None:
                 choice_index = choices.index(hotel)
 
-                hotel_details = user_hotel.iloc[choice_index]
+                hotel_details = city_hotels.iloc[choice_index]
                 hotel_name = hotel_details["HotelName"]
                 hotel_rating = rating(hotel_details["HotelRating"])
                 hotel_address = hotel_details["Address"]

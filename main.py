@@ -3,7 +3,7 @@ from helpers.login_helper import login_user, manage_accounts
 from features.hotel import reserve_hotel
 from features.car import reserve_car
 from features.city import switch_city
-from features.attraction import reserve_attraction
+from features.attractions import reserve_attraction
 from helpers.cli_helper import clear
 
 def menu_interface():

@@ -6,3 +6,4 @@ class User:
         self.user = user
         self.password = password
         self.city = select_city(id)
+        self.hotel_filter = None
