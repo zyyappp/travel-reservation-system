@@ -211,8 +211,8 @@ Base price: RM {hotel_price:.2f} / night
 
             if not num_rooms:
                 current_page = "continue"
-            elif not num_rooms.isdigit() or not int(num_rooms):
-                print("Number of rooms must be an integer and not zero.")
+            elif not num_rooms.isdigit() or int(num_rooms) <=0:
+                print("Number of rooms must be an integer and not less than or equal to zero.")
             elif int(num_rooms) > availability[hotel_name]:
                 print("Number of rooms cannot exceed the hotel's maximum room capacity.")
             elif num_rooms.isdigit():
