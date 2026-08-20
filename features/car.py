@@ -155,7 +155,8 @@ def reserve_car(user_id):
                     "start_date" : str(start),
                     "end_date" : str(end),
                     "days" : no_of_days,
-                    "paid" : False
+                    "paid" : False,
+                    "expired" : False
                 })
 
         dump_reserve(reserve_data)

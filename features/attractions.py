@@ -89,9 +89,9 @@ Filter: {user_filter}
                         for i, data in city_attractions.iterrows()
                                         ]  
                 attraction_heading = f"""
-    {'─' * 60}
-    ATTRACTIONS IN {account["city"].upper()}
-    {'─' * 60}
+{'─' * 60}
+ATTRACTIONS IN {account["city"].upper()}
+{'─' * 60}
     """  
                 print(attraction_heading)
                 user_attraction = search("", choices, 10)
@@ -188,16 +188,18 @@ RM {attraction_price:.2f} / pax
                     current_page = "continue"
         if current_page == "continue":
             clear()
-            net_price = attraction_price * num_ppl * days
+            net_total = attraction_price * num_ppl * days
             account["attractions"].append({
                 "name" : attraction_name,
                 "category" : attraction_category,
-                "start" : start_input,
-                "end" : end_input,
+                "start" : str(start),
+                "end" : str(end),
                 "days" : days,
                 "price" : float(attraction_price),
                 "pax" : num_ppl,
-                "net_price" : float(net_price)
+                "net_total" : float(net_total),
+                "paid" : False,
+                "expired" : False
             })
             dump_reserve(user_data)
 
@@ -222,7 +224,7 @@ PAX
 {num_ppl} person(s)
 
 NET TOTAL
-RM {net_price:.2f}
+RM {net_total:.2f}
 {'─' * 60}
                                                       """
             print(final_details)

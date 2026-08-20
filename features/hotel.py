@@ -296,14 +296,15 @@ Base price: RM {hotel_price:.2f} / night
         {
             "name" : hotel_details["HotelName"],
             "rating" : len(rating(hotel_details["HotelRating"])),
-            "start" : start_input,
-            "end" : end_input,
+            "start" : str(start),
+            "end" : str(end),
             "nights" : int(nights),
             "room_type" : selected_room_type,
             "rooms" : int(num_rooms),
             "base_price" : float(hotel_details["price"]),
             "net_total" : float(net_total),
-            "paid" : False
+            "paid" : False,
+            "expired" : False
         }
     )
     availability[hotel_name] -= num_rooms
