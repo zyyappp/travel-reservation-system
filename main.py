@@ -16,7 +16,7 @@ def menu_interface():
         "Hotels" : reserve_hotel,
         "Cars" : reserve_car,
         "Attractions" : reserve_attraction,
-        "Payment" : None,
+        "Payment" : payment,
         "Switch City" : switch_city,
         "Manage Accounts" : manage_accounts
     }

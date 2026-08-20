@@ -48,14 +48,15 @@ Filter: {user_filter}
         if current_page == "change_filters":
             clear()
             filter_choices = ["Default", "Category", "Price: Low → High", "Price: High → Low"]
-            user_filter = select("Sort by:", filter_choices)
+            new_filter = select("Sort by:", filter_choices)
 
-            if user_filter == "BACK":
+            if new_filter == "BACK":
                 current_page = "attractions_search"
                 continue
-            elif user_filter == filter_choices[0]:
+            elif new_filter == filter_choices[0]:
                 city_attractions = attraction_data[attraction_data["City"] == account["city"]].reset_index(drop=True)
-            elif user_filter == filter_choices[1]:
+                user_filter = new_filter
+            elif new_filter == filter_choices[1]:
                 clear()
                 select_category = select("Select Category to filter", attraction_data[attraction_data["City"] == account["city"]]["Category"].drop_duplicates())
                 if select_category == "BACK":
@@ -63,12 +64,14 @@ Filter: {user_filter}
                     continue
                 city_attractions = attraction_data[(attraction_data["City"] == account["city"]) & (attraction_data["Category"] == select_category)]
 
-                user_filter += f": {select_category}"
-            elif user_filter == filter_choices[2]:
+                new_filter += f": {select_category}"
+                user_filter = new_filter
+            elif new_filter == filter_choices[2]:
                 city_attractions = attraction_data[attraction_data["City"] == account["city"]].sort_values("Entry_Price_MYR").reset_index(drop=True)
-            elif user_filter == filter_choices[3]:
+                user_filter = new_filter
+            elif new_filter == filter_choices[3]:
                 city_attractions = attraction_data[attraction_data["City"] == account["city"]].sort_values("Entry_Price_MYR", ascending = False).reset_index(drop=True)
-
+                user_filter = new_filter
             current_page = "attractions_search"
 
         if current_page == "attractions_selection":

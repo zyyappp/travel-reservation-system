@@ -74,30 +74,43 @@ Filter: {user_filter}
             clear()
 
             filter_choices = ["Default", "Price: Low → High", "Price: High → Low", "Rating: Low → High", "Rating: High → Low", "Name: A → Z"]
-            user_filter = select("Sort by:", filter_choices)
+            new_filter = select("Sort by:", filter_choices)
 
-            if user_filter == "BACK":
+            if new_filter == "BACK":
                 current_page = "hotel_search"
+
                 continue
-            elif user_filter == filter_choices[0]:
+            elif new_filter == filter_choices[0]:
                 city_hotels = hotel_data[hotel_data["cityName"] == account["city"]].reset_index(drop=True)
-            elif user_filter == filter_choices[1]:
+                user_filter = new_filter
+
+            elif new_filter == filter_choices[1]:
                 city_hotels = city_hotels.sort_values("price").reset_index(drop=True)
-            elif user_filter == filter_choices[2]:
+                user_filter = new_filter
+
+            elif new_filter == filter_choices[2]:
                 city_hotels = city_hotels.sort_values("price", ascending = False).reset_index(drop=True)
-            elif user_filter == filter_choices[3]:
+                user_filter = new_filter
+
+            elif new_filter == filter_choices[3]:
                 city_hotels = city_hotels.sort_values(
                     by = "HotelRating",
                     key = lambda series: series.map(lambda r : len(rating(r)) if rating(r) != "N/A" else 0), # series = whole HotelRating series -> (each value mapped to r) -> passed to function
                 ).reset_index(drop = True)
-            elif user_filter == filter_choices[4]:
+                user_filter = new_filter
+
+            elif new_filter == filter_choices[4]:
                 city_hotels = city_hotels.sort_values(
                     by = "HotelRating",
                     key = lambda series: series.map(lambda r : len(rating(r)) if rating(r) != "N/A" else 0) ,
                     ascending = False
                 ).reset_index(drop = True)
-            elif user_filter == filter_choices[5]:
+                user_filter = new_filter
+
+            elif new_filter == filter_choices[5]:
                 city_hotels = city_hotels.sort_values("HotelName").reset_index(drop = True)
+                user_filter = new_filter
+
 
             current_page = "hotel_search"
 
