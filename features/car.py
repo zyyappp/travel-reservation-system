@@ -136,6 +136,7 @@ def reserve_car(user_id):
 
     {"-" * 20}
     """
+    clear()
     print(car_details)
     confirm = select("Confirm reservation? >> ", ["Yes", "No"])
     if confirm == "Yes":

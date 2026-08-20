@@ -290,32 +290,35 @@ Base price: RM {hotel_price:.2f} / night
     Price per single room : RM {hotel_details["price"]:.2f}
     Net total: RM {net_total:.2f}
 """
-
+    clear()
     print(reserve_details)
-    account["hotel"].append(
-        {
-            "name" : hotel_details["HotelName"],
-            "rating" : len(rating(hotel_details["HotelRating"])),
-            "start" : str(start),
-            "end" : str(end),
-            "nights" : int(nights),
-            "room_type" : selected_room_type,
-            "rooms" : int(num_rooms),
-            "base_price" : float(hotel_details["price"]),
-            "net_total" : float(net_total),
-            "paid" : False,
-            "expired" : False
-        }
-    )
-    availability[hotel_name] -= num_rooms
-    dump_availability(availability)
-    dump_reserve(user_data)
-    options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
-    option = select("Enter option", options)
+    confirm = select("Confirm reservation? >> ", ["Yes", "No"])
+    if confirm == "Yes":
+        print("Reserved!")
+        account["hotel"].append(
+            {
+                "name" : hotel_details["HotelName"],
+                "rating" : len(rating(hotel_details["HotelRating"])),
+                "start" : str(start),
+                "end" : str(end),
+                "nights" : int(nights),
+                "room_type" : selected_room_type,
+                "rooms" : int(num_rooms),
+                "base_price" : float(hotel_details["price"]),
+                "net_total" : float(net_total),
+                "paid" : False,
+                "expired" : False
+            }
+        )
+        availability[hotel_name] -= num_rooms
+        dump_availability(availability)
+        dump_reserve(user_data)
+        options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
+        option = select("Enter option", options)
 
-    if option == options[0]:
-        return payment(user_id)
-    elif option == options[1] or option == "BACK":
-        return
-    elif option == options[2]:
-        quit()
+        if option == options[0]:
+            return payment(user_id)
+        elif option == options[1] or option == "BACK":
+            return
+        elif option == options[2]:
+            quit()

@@ -189,19 +189,6 @@ RM {attraction_price:.2f} / pax
         if current_page == "continue":
             clear()
             net_total = attraction_price * num_ppl * days
-            account["attractions"].append({
-                "name" : attraction_name,
-                "category" : attraction_category,
-                "start" : str(start),
-                "end" : str(end),
-                "days" : days,
-                "price" : float(attraction_price),
-                "pax" : num_ppl,
-                "net_total" : float(net_total),
-                "paid" : False,
-                "expired" : False
-            })
-            dump_reserve(user_data)
 
             final_details = f"""
 {'─' * 60}
@@ -228,11 +215,27 @@ RM {net_total:.2f}
 {'─' * 60}
                                                       """
             print(final_details)
-            options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
-            option = select("Enter option", options)
-            if option == options[0]:
-                return payment(user_id)
-            elif option == options[1] or option == "BACK":
-                return
-            elif option == options[2]:
-                quit()
+            confirm = select("Confirm reservation? >> ", ["Yes", "No"])
+            if confirm == "Yes":
+                print("Reserved!")
+                account["attractions"].append({
+                "name" : attraction_name,
+                "category" : attraction_category,
+                "start" : str(start),
+                "end" : str(end),
+                "days" : days,
+                "price" : float(attraction_price),
+                "pax" : num_ppl,
+                "net_total" : float(net_total),
+                "paid" : False,
+                "expired" : False
+            })
+                dump_reserve(user_data)
+                options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
+                option = select("Enter option", options)
+                if option == options[0]:
+                    return payment(user_id)
+                elif option == options[1] or option == "BACK":
+                    return
+                elif option == options[2]:
+                    quit()
