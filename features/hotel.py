@@ -283,9 +283,10 @@ Base price: RM {hotel_price:.2f} / night
     guest_multiplier = 0.364 * math.log(room_list.index(room_type)+1) + 1
     net_total = round(guest_multiplier * hotel_details["price"] * num_rooms * nights ,2) 
     reserve_details = f"""
-    Hotel: {hotel_details["HotelName"]}
+    Hotel : {hotel_details["HotelName"]}
+    Period : {start_input} - {end_input}
     Nights : {nights}
-    Room type: {selected_room_type}
+    Room type: {selected_room_type.capitalize()}
     Rooms: {num_rooms}
     Price per single room : RM {hotel_details["price"]:.2f}
     Net total: RM {net_total:.2f}

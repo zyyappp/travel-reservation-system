@@ -130,8 +130,7 @@ def reserve_car(user_id):
     Model : {car_model}
     Segment : {segment}
     Price : RM {car_price}
-    Start date : {start}
-    End date: {end}
+    Period : {start_input} - {end_input}
     Days : {no_of_days}
 
     {"-" * 20}
