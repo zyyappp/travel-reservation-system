@@ -42,27 +42,41 @@ Filter: {user_filter}
             elif browse_or_sort == browse_selection[1]:
                 current_page = "change_filters"
             elif browse_or_sort == browse_selection[2]:
-                
+                city_attractions = attraction_data[attraction_data["City"] == account["city"]].reset_index(drop=True)
                 user_filter = "Default"
 
         if current_page == "change_filters":
+            clear()
             filter_choices = ["Default", "Category", "Price: Low → High", "Price: High → Low"]
             user_filter = select("Sort by:", filter_choices)
 
             if user_filter == "BACK":
-                current_page = "attraction_search"
+                current_page = "attractions_search"
                 continue
+            elif user_filter == filter_choices[0]:
+                city_attractions = attraction_data[attraction_data["City"] == account["city"]].reset_index(drop=True)
+            elif user_filter == filter_choices[1]:
+                clear()
+                select_category = select("Select Category to filter", attraction_data["Category"].drop_duplicates())
+                city_attractions = city_attractions[city_attractions["Category"] == select_category].reset_index(drop = True)
 
-            current_page = "attraction_search"
+                user_filter += f": {select_category}"
+            elif user_filter == filter_choices[2]:
+                city_attractions = attraction_data[attraction_data["City"] == account["city"]].sort_values("Entry_Price_MYR").reset_index(drop=True)
+            elif user_filter == filter_choices[3]:
+                city_attractions = attraction_data[attraction_data["City"] == account["city"]].sort_values("Entry_Price_MYR", ascending = False).reset_index(drop=True)
+
+            current_page = "attractions_search"
 
         if current_page == "attractions_selection":
+            clear()
             if city_attractions.empty:
-                clear()
                 print("Oops! It seems that there are no attraction places in this city. Please try another city.")
                 input()
-                current_page = "finished"
-                return
+                current_page = "attractions_search"
+
             else:
+                
 
                 choices = [
                         (f"{i+1}. {data["Name"]} | {data["Category"]} | RM {data["Entry_Price_MYR"]:.2f}")
