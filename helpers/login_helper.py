@@ -8,14 +8,18 @@ from helpers.selection_helper import select
 from helpers.cli_helper import clear
 from features import load_reserve, dump_reserve
 
-def load_login():
-    with open(LOGIN_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 def dump_login(info):
     with open(LOGIN_PATH, "w", encoding="utf-8") as f:
         json.dump(info, f, indent=4)
 
+def load_login():
+    try:
+        with open(LOGIN_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
+        dump_login([])
+        return []
 
 def register_user(user_id = None, previous_page=None):
     clear()
@@ -154,6 +158,7 @@ def login_user(user_id = None):
                         return User(log["id"], username, password)
                 print("Invalid username or password.")
                 time.sleep(0.5)
+                clear()
                 
 
     else:

@@ -31,8 +31,8 @@ def reserve_hotel(user_id):
         data for data in user_data if data["id"] == user_id
     )
 
-    if account.get("hotel") is None:
-        account["hotel"] = []
+    if account["reservations"].get("hotel") is None:
+        account["reservations"]["hotel"] = []
 
 
     heading = f"""
@@ -296,7 +296,7 @@ Base price: RM {hotel_price:.2f} / night
     confirm = select("Confirm reservation? >> ", ["Yes", "No"])
     if confirm == "Yes":
         print("Reserved!")
-        account["hotel"].append(
+        account["reservations"]["hotel"].append(
             {
                 "name" : hotel_details["HotelName"],
                 "rating" : len(rating(hotel_details["HotelRating"])),

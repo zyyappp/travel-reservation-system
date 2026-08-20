@@ -15,8 +15,8 @@ def reserve_attraction(user_id):
     account = next(data for data in user_data if data["id"] == user_id)
     city_attractions = attraction_data[attraction_data["City"] == account["city"]].reset_index(drop=True)
     
-    if account.get("attractions") is None:
-        account["attractions"] = []
+    if account["reservations"].get("attractions") is None:
+        account["reservations"]["attractions"] = []
 
 
     while current_page != "finished":
@@ -214,11 +214,12 @@ NET TOTAL
 RM {net_total:.2f}
 {'─' * 60}
                                                       """
+            clear()
             print(final_details)
             confirm = select("Confirm reservation? >> ", ["Yes", "No"])
             if confirm == "Yes":
                 print("Reserved!")
-                account["attractions"].append({
+                account["reservations"]["attractions"].append({
                 "name" : attraction_name,
                 "category" : attraction_category,
                 "start" : str(start),

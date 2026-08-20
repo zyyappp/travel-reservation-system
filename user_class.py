@@ -1,9 +1,11 @@
 from features.city import select_city
 
 class User:
-    def __init__(self, id, user, password):
+    def __init__(self, id, user, password, hotel = "Default", attractions = "Default"):
         self.id = id
         self.user = user
         self.password = password
         self.city = select_city(id)
-        self.hotel_filter = None
+        self.hotel_filter = hotel
+        self.attractions_filter = attractions
+        

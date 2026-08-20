@@ -8,6 +8,7 @@ os.chdir(BASE_DIR)
 LOGIN_PATH = BASE_DIR / "saves" / "login.json"
 RESERVES_PATH = BASE_DIR / "saves" / "reserves.json"
 ROOM_AVAILABILITY_PATH = BASE_DIR / "saves" / "room_availability.json"
+TRANSACTION_PATH = BASE_DIR / "saves" / "transaction_history.json"
 DATA_FOLDER = BASE_DIR / "data"
 
 hotel_data = pd.read_csv(DATA_FOLDER / "malaysia_hotels.csv")

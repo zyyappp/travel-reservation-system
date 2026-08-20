@@ -21,7 +21,8 @@ def select_city(user_id):
             reserve_data.append(
                 {
                         "id" : user_id,
-                        "city" : city
+                        "city" : city,
+                        "reservations" : {}
                 }
             )
             dump_reserve(reserve_data)

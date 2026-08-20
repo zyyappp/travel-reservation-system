@@ -30,3 +30,17 @@ def search(message, choices, height = 10):
         event.app.exit(result="BACK")
 
     return prompt.execute()
+
+def checkbox(message, choices, height=10):
+
+    prompt = inquirer.checkbox(
+            message=message,
+            choices=choices,
+            max_height=height,
+        )
+
+    @prompt.register_kb("escape")
+    def _(event):
+        event.app.exit(result="BACK")
+
+    return prompt.execute()

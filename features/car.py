@@ -140,14 +140,13 @@ def reserve_car(user_id):
     confirm = select("Confirm reservation? >> ", ["Yes", "No"])
     if confirm == "Yes":
         print("Reserved!")
-        reserve_data = load_reserve()
-
-        for data in reserve_data:
-            if data["id"] == user_id:
-                if data.get("car") is None:
-                    data["car"] = []
+        user_data = load_reserve()
+        account = next(data for data in user_data if data["id"] == user_id)
+        if account.get("car") is None:
+            account["reservations"]["car"] = []
                         
-                data["car"].append({
+        account["reservations"]["car"].append({
+                    "name" : f"{brand} {car_model}",
                     "brand" : brand,
                     "model" : car_model,
                     "segment" : segment,
@@ -159,7 +158,7 @@ def reserve_car(user_id):
                     "expired" : False
                 })
 
-        dump_reserve(reserve_data)
+        dump_reserve(user_data)
         options = ["Proceed to checkout", "Continue with another reservation", "Quit"]
         option = select("Enter option", options)
 
