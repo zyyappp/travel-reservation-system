@@ -4,16 +4,16 @@ from features.hotel import reserve_hotel
 from features.car import reserve_car
 from features.city import switch_city
 from features.attractions import reserve_attraction
+from features.payment import payment
 from helpers.cli_helper import clear
 
 def menu_interface():
     user = login_user()
-    menu_options = ["Hotels", "Trains", "Cars", "Attractions", "Payment", "Switch City", "Manage Accounts", "Quit"]
+    menu_options = ["Hotels", "Cars", "Attractions", "Payment", "Switch City", "Manage Accounts", "Quit"]
     menu = True
 
     redirect = {
         "Hotels" : reserve_hotel,
-        "Trains" : None,
         "Cars" : reserve_car,
         "Attractions" : reserve_attraction,
         "Payment" : None,

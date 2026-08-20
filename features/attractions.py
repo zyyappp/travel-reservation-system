@@ -57,8 +57,11 @@ Filter: {user_filter}
                 city_attractions = attraction_data[attraction_data["City"] == account["city"]].reset_index(drop=True)
             elif user_filter == filter_choices[1]:
                 clear()
-                select_category = select("Select Category to filter", attraction_data["Category"].drop_duplicates())
-                city_attractions = city_attractions[city_attractions["Category"] == select_category].reset_index(drop = True)
+                select_category = select("Select Category to filter", attraction_data[attraction_data["City"] == account["city"]]["Category"].drop_duplicates())
+                if select_category == "BACK":
+                    current_page = "attractions_search"
+                    continue
+                city_attractions = attraction_data[(attraction_data["City"] == account["city"]) & (attraction_data["Category"] == select_category)]
 
                 user_filter += f": {select_category}"
             elif user_filter == filter_choices[2]:
@@ -135,9 +138,9 @@ RM {attraction_price:.2f} / pax
                 print("Number of people must be an integer and not less than or equal to zero.")
                 time.sleep(0.5)
             elif int(num_ppl) > 10:
-                print("Number of rooms cannot exceed the hotel's maximum room capacity.")
+                print("Number of people cannot exceed the maximum reservable capacity.")
                 time.sleep(0.5)
-            elif num_ppl.isdigit():
+            else:
 
                 num_ppl = int(num_ppl)
 
