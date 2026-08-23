@@ -21,6 +21,7 @@ def menu_interface():
         "Payment" : payment,
         "Switch City" : switch_city,
         "Manage Accounts" : manage_accounts
+        
     }
     while menu:
         clear()

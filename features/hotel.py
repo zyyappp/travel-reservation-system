@@ -167,7 +167,7 @@ Facilities:
 From RM {hotel_price:.2f} per night
 
 {'─' * 60}
-                    """).strip()
+""").strip()
 
             print(details)
             confirm_reserve = select("", ["Continue", "View full details"])
@@ -296,8 +296,10 @@ Base price: RM {hotel_price:.2f} / night
     confirm = select("Confirm reservation? >> ", ["Yes", "No"])
     if confirm == "Yes":
         print("Reserved!")
+        total_reservations = sum(len(v) for v in account["reservations"].values()) + 1
         account["reservations"]["hotel"].append(
             {
+                "reservation_id" : total_reservations,
                 "name" : hotel_details["HotelName"],
                 "rating" : len(rating(hotel_details["HotelRating"])),
                 "start" : str(start),

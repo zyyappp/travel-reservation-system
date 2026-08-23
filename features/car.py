@@ -142,15 +142,20 @@ def reserve_car(user_id):
         print("Reserved!")
         user_data = load_reserve()
         account = next(data for data in user_data if data["id"] == user_id)
+        net_total = car_price * no_of_days
+
         if account.get("car") is None:
             account["reservations"]["car"] = []
-                        
+        
+        total_reservations = sum(len(v) for v in account["reservations"].values()) + 1
         account["reservations"]["car"].append({
+                    "reservation_id" : total_reservations,
                     "name" : f"{brand} {car_model}",
                     "brand" : brand,
                     "model" : car_model,
                     "segment" : segment,
                     "price" : car_price,
+                    "net_total" : net_total,
                     "start_date" : str(start),
                     "end_date" : str(end),
                     "days" : no_of_days,

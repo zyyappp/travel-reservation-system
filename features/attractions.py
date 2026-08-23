@@ -218,8 +218,10 @@ RM {net_total:.2f}
             print(final_details)
             confirm = select("Confirm reservation? >> ", ["Yes", "No"])
             if confirm == "Yes":
+                total_reservations = sum(len(v) for v in account["reservations"].values()) + 1
                 print("Reserved!")
                 account["reservations"]["attractions"].append({
+                "reservation_id" : total_reservations,
                 "name" : attraction_name,
                 "category" : attraction_category,
                 "start" : str(start),
