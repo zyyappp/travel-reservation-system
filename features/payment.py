@@ -1,6 +1,6 @@
 from features import load_reserve, dump_reserve
-from helpers.selection_helper import search, select, checkbox
-from helpers.cli_helper import clear
+from helpers.selection_helper import select, checkbox
+from helpers.cli_helper import clear, print_header
 from datetime import datetime
 import time
 from config import TRANSACTION_PATH
@@ -54,15 +54,11 @@ def payment(user_id):
     while current_page != "finished":
         clear()
         if current_page == "view_or_pay":
-            ui_choices = ["Proceed to payment", "View payment history"]
-            print(f"""
-{'─' * 60}
-PAYMENT
-{'─' * 60}
-        """)
+            ui_choices = ["Proceed to payment", "View payment history", "Back"]
+            print_header("PAYMENT")
             payment_ui = select("", ui_choices)
 
-            if payment_ui == "BACK":
+            if payment_ui == "BACK" or payment_ui == "Back":
                 current_page = "finished"
                 return
             elif payment_ui == ui_choices[0]:
@@ -80,11 +76,7 @@ PAYMENT
                 "car": "day(s)",
                 "attractions": "pax"
             }
-            print(f"""
-{'─' * 60}
-SELECT RESERVATIONS TO PAY
-{'─' * 60}
-        """)
+            print_header("SELECT RESERVATIONS TO PAY")
             
             for key, value in account["reservations"].items():
                 for reservation in value:
@@ -102,7 +94,7 @@ SELECT RESERVATIONS TO PAY
 
             if not reservation_list:
                 print("There are currently no reservations.")
-                time.sleep(1)
+                input()
                 current_page = "view_or_pay"
                 continue
 
@@ -116,7 +108,6 @@ SELECT RESERVATIONS TO PAY
             if proceed == "BACK":
                 current_page = "view_or_pay"
             elif not proceed:
-                clear()
                 print("Please select an option. (TAB) ")
                 time.sleep(1)
                 continue
@@ -263,9 +254,6 @@ PAYMENT (CREDIT / DEBIT CARD)
             #animation
             auth_animation()
             clear()
-            for i in range(12):
-                print(f"\rAuthorizing payment {['|', '/', '-', '\\'][i % 4]}", end="", flush=True)
-                time.sleep(0.15)
 
             print("\rPayment successful! ✓")
             time.sleep(1.5)
@@ -311,6 +299,7 @@ Paid Reservations:
 
         if current_page == "view_transaction":
             clear()
+            print_header("TRANSACTION HISTORY", 75)
             if not trans_acc["transactions"]:
                 print("There are currently no transactions.")
                 input()
@@ -318,9 +307,6 @@ Paid Reservations:
                 continue
     
             print(f"""
-{'─' * 75}
-TRANSACTION HISTORY
-{'─' * 75}
 
 {'TRANSACTION ID':<20} {'DATE':<20} {'RESERVATIONS':<20} {'TOTAL (RM)':<10}
 {'─' * 75}

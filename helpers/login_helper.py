@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from config import LOGIN_PATH
 from user_class import User
 from helpers.selection_helper import select
-from helpers.cli_helper import clear
+from helpers.cli_helper import clear, print_header
 from features import load_reserve, dump_reserve
 
 
@@ -23,11 +23,7 @@ def load_login():
 
 def register_user(user_id = None, previous_page=None):
     clear()
-    print(f"""
-{'─' * 60}
-                       CREATE ACCOUNT
-{'─' * 60}
-""")
+    print_header("CREATE ACCOUNT")
     login_data = load_login()
     user_valid = False
     password_valid = False
@@ -93,18 +89,20 @@ def register_user(user_id = None, previous_page=None):
         "user" : username,
         "password" : password,
         "date_created" : str(datetime.now()),
-        "last_login" : str(datetime.now())
+        "last_login" : str(datetime.now()),
+        "hotel_filter" : "Default",
+        "attractions_filter" : "Default"
     }
     login_data.append(data)
     dump_login(login_data)
 
-    return User(data["id"], username, password)
+    return User(data["id"], username, password, data["hotel_filter"], data["attractions_filter"])
 
 
 def login_user(user_id = None):
     login_data = load_login()
     if not login_data:
-        print(f"{"-"*20}\nRegister\n{"-" * 20}")
+        print_header("REGISTER ACCOUNT")
         return register_user()
 
     earliest_login = None
@@ -129,7 +127,8 @@ def login_user(user_id = None):
 
             if current_page == "reg_or_login":
                 clear()
-                reg_or_login = select("Register or Login", ["Login to existing account", "Register a new account"])
+                print_header("REGISTER OR LOGIN")
+                reg_or_login = select("", ["Login to existing account", "Register a new account"])
 
 
                 if reg_or_login == "BACK":
@@ -141,7 +140,7 @@ def login_user(user_id = None):
                     current_page = "login"
 
             if current_page == "login":
-                print(f"{"-"*20}\nLogin\n{"-" * 20}")
+                print_header("LOGIN ACCOUNT")
                 username = input("Enter username >> ")
                 password = input("Enter password >> ")
 
@@ -155,7 +154,7 @@ def login_user(user_id = None):
 
                         log["last_login"] = str(datetime.now())
                         dump_login(login_data)
-                        return User(log["id"], username, password)
+                        return User(log["id"], username, password, log["hotel_filter"], log["attractions_filter"])
                 print("Invalid username or password.")
                 time.sleep(0.5)
                 clear()
@@ -165,7 +164,7 @@ def login_user(user_id = None):
         latest_login = login_data[earliest_login]
         latest_login["last_login"] = str(datetime.now())
         dump_login(login_data)
-        return User(latest_login["id"], latest_login["user"], latest_login["password"])
+        return User(latest_login["id"], latest_login["user"], latest_login["password"], latest_login["hotel_filter"], latest_login["attractions_filter"])
 
 
 def manage_accounts(user_id):
@@ -178,12 +177,13 @@ def manage_accounts(user_id):
     )
 
     while current_page != "finished":
-        login_type =  ["Login to existing account", "Add a new account", "Delete account"]
-        selection = select("--- Login ---", login_type)
+        print_header(f"MANAGE ACCOUNT - {account["user"].upper()}")
+        login_type =  ["Login to existing account", "Add a new account", "Delete account", "Back"]
+        selection = select("", login_type)
 
-        if selection == "BACK":
+        if selection == "BACK" or selection == "Back":
             current_page = "finished"
-            return User(user_id, account["user"], account["password"])
+            return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
 
         if selection == login_type[0]:
             current_page = "login_existing"
@@ -197,7 +197,7 @@ def manage_accounts(user_id):
                 account["last_login"] = str(datetime.now())
                 dump_login(login_data)
                 time.sleep(0.5)
-                return User(user_id, account["user"], account["password"])
+                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
             else:
                 valid = False
                 while not valid:
@@ -208,7 +208,7 @@ def manage_accounts(user_id):
                             valid = True
                             data["last_login"] = str(datetime.now())
                             dump_login(login_data)
-                            return User(data["id"], data["user"], data["password"])
+                            return User(data["id"], data["user"], data["password"], data["hotel_filter"], data["attractions_filter"])
 
                 
                 print("Invalid password")
@@ -222,7 +222,8 @@ def manage_accounts(user_id):
             return register_user(user_id, manage_accounts)
 
         if current_page == "delete":
-            confirm_del = select(f"Confirm deletion of {account["user"]}?", ["Yes", "No"])
+            print_header(f"CONFIRM DELETION OF {account["user"].upper()}?")
+            confirm_del = select("", ["Yes", "No"])
 
             if confirm_del == "BACK":
                 current_page = "login_selection"
@@ -231,7 +232,7 @@ def manage_accounts(user_id):
                 current_page = "confirm_delete"
 
             elif confirm_del == "No":
-                return User(user_id, account["user"], account["password"])
+                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
 
         if current_page == "confirm_delete":
             delete_password = input(f"Enter password for {account["user"]} >> ")

@@ -5,47 +5,79 @@ from features.car import reserve_car
 from features.city import switch_city
 from features.attractions import reserve_attraction
 from features.payment import payment
-from helpers.cli_helper import clear
-#backlog: reset reservations if want to switch city
+from features.reservations import reservations
+from helpers.cli_helper import clear, print_header
+
 user = login_user()
 
 def menu_interface():
     global user
-    menu_options = ["Hotels", "Cars", "Attractions", "Payment", "Switch City", "Manage Accounts", "Quit"]
+    menu_options = ["Reserve Hotel", "Reserve Car", "Reserve Attractions", "Reservations", "Payment", "Switch City", "Manage Accounts", "Help", "Quit"]
     menu = True
 
     redirect = {
-        "Hotels" : reserve_hotel,
-        "Cars" : reserve_car,
-        "Attractions" : reserve_attraction,
-        "Payment" : payment,
-        "Switch City" : switch_city,
-        "Manage Accounts" : manage_accounts
-        
+        "Reserve Hotel": reserve_hotel,
+        "Reserve Car": reserve_car,
+        "Reserve Attractions": reserve_attraction,
+        "Reservations" : reservations,
+        "Payment": payment,
+        "Switch City": switch_city,
+        "Manage Accounts": manage_accounts,
+        # "Help" is handled separately
     }
     while menu:
         clear()
-        print(f"Logged as {user.user}\nCity selected: {user.city}")
         try:
-            user_input = select("", menu_options)
+            user_input = select(
+                f"\n{'─'*60}\n        TRAVEL RESERVATION SYSTEM\n{'─'*60}\n\n"
+                f"Logged in as: {user.user}\nCurrent city: {user.city}\n",
+                menu_options
+            )
 
-            if user_input == menu_options[-1]: 
+            # Escape handling – go back to the menu without error
+            if user_input == "BACK":
+                continue
+
+            if user_input == "Quit":
+                clear()
                 menu = False
                 break
-            elif user_input not in redirect.keys():
+
+            if user_input == "Help":
+                show_help()
                 continue
-            elif user_input == menu_options[-3]:
+
+            if user_input == "Switch City":
                 user.city = switch_city(user.id)
                 continue
-            elif user_input == menu_options[-2]:
-                user = redirect[user_input](user.id)
-                continue
-            elif redirect[user_input] is not None:
-                redirect[user_input](user.id)
-                continue
+
+            # Call the appropriate feature; if it returns a user object, update it
+            result = redirect.get(user_input)
+            if result:
+                updated = result(user.id)
+                if updated is not None:
+                    user = updated
+            continue
         except KeyboardInterrupt:
             continue
 
 
+
+def show_help():
+    clear()
+    print_header("HELP")
+    print("""
+Help – What each option does:
+
+Reserve Hotel      – Browse hotels and make a reservation.
+Reserve Car        – Choose a car and reserve it.
+Reserve Attraction – Pick attractions to visit.
+Payment            – View/pay outstanding reservations.
+Switch City        – Change your current city.
+Manage Accounts    – Edit your user profile.
+Help               – Show this help message.
+Quit               – Exit the application.
+""")
+    input()
 
 menu_interface()

@@ -1,7 +1,7 @@
 from features.city import select_city
 
 class User:
-    def __init__(self, id, user, password, hotel = "Default", attractions = "Default"):
+    def __init__(self, id, user, password, hotel, attractions):
         self.id = id
         self.user = user
         self.password = password
