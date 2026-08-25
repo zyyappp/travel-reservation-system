@@ -177,9 +177,7 @@ def reservations(user_id):
 
     while current_page != "finished":
 
-        # =========================================================
         # RESERVATION MENU
-        # =========================================================
 
         if current_page == "view":
 
@@ -216,9 +214,7 @@ def reservations(user_id):
                 current_page = "reset_filter"
 
 
-        # =========================================================
         # VIEW RESERVATIONS
-        # =========================================================
 
         if current_page == "view_reservations":
 
@@ -251,9 +247,7 @@ def reservations(user_id):
                 current_page = "reservation_details"
 
 
-        # =========================================================
         # CHANGE FILTER
-        # =========================================================
 
         if current_page == "change_filter":
 
@@ -306,9 +300,7 @@ def reservations(user_id):
             
 
 
-        # =========================================================
         # RESERVATION DETAILS
-        # =========================================================
 
         if current_page == "reservation_details":
 
@@ -340,9 +332,7 @@ def reservations(user_id):
                 current_page = "view_reservations"
 
 
-        # =========================================================
         # CANCEL CONFIRMATION
-        # =========================================================
 
         if current_page == "cancel_confirmation":
 
@@ -379,9 +369,7 @@ Are you sure you want to cancel this reservation?
                 current_page = "reservation_details"
 
 
-        # =========================================================
         # CANCEL RESERVATION
-        # =========================================================
 
         if current_page == "cancel_reservation":
 
@@ -400,7 +388,7 @@ Are you sure you want to cancel this reservation?
 
             print("Reservation cancelled successfully! ✓")
 
-            input("Press ENTER to return...")
+            input("Press ENTER to return...\n")
 
             # Refresh reservations after deletion
 
