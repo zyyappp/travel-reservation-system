@@ -224,6 +224,7 @@ RM {net_total:.2f}
                 account["reservations"]["attractions"].append({
                 "reservation_id" : total_reservations,
                 "name" : attraction_name,
+                "city" : account["city"],
                 "category" : attraction_category,
                 "start" : str(start),
                 "end" : str(end),

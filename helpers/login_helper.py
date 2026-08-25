@@ -7,6 +7,7 @@ from user_class import User
 from helpers.selection_helper import select
 from helpers.cli_helper import clear, print_header
 from features import load_reserve, dump_reserve
+from helpers.expiry_helper import check_expired_reservations
 
 
 def dump_login(info):
@@ -20,6 +21,19 @@ def load_login():
     except (json.decoder.JSONDecodeError, FileNotFoundError):
         dump_login([])
         return []
+
+def update_expiry(user_id):
+    reservation_data = load_reserve()
+
+    account = next(
+        (data for data in reservation_data if data["id"] == user_id), None
+    )
+
+    if account is None: return
+
+    check_expired_reservations(account)
+
+    dump_reserve(reservation_data)
 
 def register_user(user_id = None, previous_page=None):
     clear()
@@ -91,12 +105,13 @@ def register_user(user_id = None, previous_page=None):
         "date_created" : str(datetime.now()),
         "last_login" : str(datetime.now()),
         "hotel_filter" : "Default",
-        "attractions_filter" : "Default"
+        "attractions_filter" : "Default",
+        "reservations_filter" : "Default"
     }
     login_data.append(data)
     dump_login(login_data)
 
-    return User(data["id"], username, password, data["hotel_filter"], data["attractions_filter"])
+    return User(data["id"], username, password, data["hotel_filter"], data["attractions_filter"], data["reservations_filter"])
 
 
 def login_user(user_id = None):
@@ -133,6 +148,7 @@ def login_user(user_id = None):
 
                 if reg_or_login == "BACK":
                     current_page = "reg_or_login"
+
                 if reg_or_login == "Register a new account":
                     current_page = "finished"
                     return register_user(previous_page=login_user)
@@ -154,7 +170,8 @@ def login_user(user_id = None):
 
                         log["last_login"] = str(datetime.now())
                         dump_login(login_data)
-                        return User(log["id"], username, password, log["hotel_filter"], log["attractions_filter"])
+                        update_expiry(log["id"])
+                        return User(log["id"], username, password, log["hotel_filter"], log["attractions_filter"], log["reservations_filter"])
                 print("Invalid username or password.")
                 time.sleep(0.5)
                 clear()
@@ -164,7 +181,8 @@ def login_user(user_id = None):
         latest_login = login_data[earliest_login]
         latest_login["last_login"] = str(datetime.now())
         dump_login(login_data)
-        return User(latest_login["id"], latest_login["user"], latest_login["password"], latest_login["hotel_filter"], latest_login["attractions_filter"])
+        update_expiry(latest_login["id"])
+        return User(latest_login["id"], latest_login["user"], latest_login["password"], latest_login["hotel_filter"], latest_login["attractions_filter"], latest_login["reservations_filter"])
 
 
 def manage_accounts(user_id):
@@ -183,7 +201,8 @@ def manage_accounts(user_id):
 
         if selection == "BACK" or selection == "Back":
             current_page = "finished"
-            return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
+
+            return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"], account["reservations_filter"])
 
         if selection == login_type[0]:
             current_page = "login_existing"
@@ -197,7 +216,8 @@ def manage_accounts(user_id):
                 account["last_login"] = str(datetime.now())
                 dump_login(login_data)
                 time.sleep(0.5)
-                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
+                update_expiry(account["id"])
+                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"], account["reservations_filter"])
             else:
                 valid = False
                 while not valid:
@@ -208,7 +228,8 @@ def manage_accounts(user_id):
                             valid = True
                             data["last_login"] = str(datetime.now())
                             dump_login(login_data)
-                            return User(data["id"], data["user"], data["password"], data["hotel_filter"], data["attractions_filter"])
+                            update_expiry(data["id"])
+                            return User(data["id"], data["user"], data["password"], data["hotel_filter"], data["attractions_filter"], data["reservations_filter"])
 
                 
                 print("Invalid password")
@@ -232,7 +253,8 @@ def manage_accounts(user_id):
                 current_page = "confirm_delete"
 
             elif confirm_del == "No":
-                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"])
+                update_expiry(account["id"])
+                return User(user_id, account["user"], account["password"], account["hotel_filter"], account["attractions_filter"], account["reservations_filter"])
 
         if current_page == "confirm_delete":
             delete_password = input(f"Enter password for {account["user"]} >> ")

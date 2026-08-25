@@ -312,6 +312,7 @@ RM {net_total:.2f}
             {
                 "reservation_id" : total_reservations,
                 "name" : hotel_details["HotelName"],
+                "city" : account["city"],
                 "rating" : len(rating(hotel_details["HotelRating"])),
                 "start" : str(start),
                 "end" : str(end),

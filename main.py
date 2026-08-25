@@ -6,13 +6,13 @@ from features.city import switch_city
 from features.attractions import reserve_attraction
 from features.payment import payment
 from features.reservations import reservations
-from helpers.cli_helper import clear, print_header
+from helpers.cli_helper import clear
 
 user = login_user()
 
 def menu_interface():
     global user
-    menu_options = ["Reserve Hotel", "Reserve Car", "Reserve Attractions", "Reservations", "Payment", "Switch City", "Manage Accounts", "Help", "Quit"]
+    menu_options = ["Reserve Hotel", "Reserve Car", "Reserve Attractions", "Reservations", "Payment", "Switch City", "Manage Accounts", "Quit"]
     menu = True
 
     redirect = {
@@ -23,7 +23,6 @@ def menu_interface():
         "Payment": payment,
         "Switch City": switch_city,
         "Manage Accounts": manage_accounts,
-        # "Help" is handled separately
     }
     while menu:
         clear()
@@ -43,10 +42,6 @@ def menu_interface():
                 menu = False
                 break
 
-            if user_input == "Help":
-                show_help()
-                continue
-
             if user_input == "Switch City":
                 user.city = switch_city(user.id)
                 continue
@@ -60,24 +55,5 @@ def menu_interface():
             continue
         except KeyboardInterrupt:
             continue
-
-
-
-def show_help():
-    clear()
-    print_header("HELP")
-    print("""
-Help – What each option does:
-
-Reserve Hotel      – Browse hotels and make a reservation.
-Reserve Car        – Choose a car and reserve it.
-Reserve Attraction – Pick attractions to visit.
-Payment            – View/pay outstanding reservations.
-Switch City        – Change your current city.
-Manage Accounts    – Edit your user profile.
-Help               – Show this help message.
-Quit               – Exit the application.
-""")
-    input()
 
 menu_interface()

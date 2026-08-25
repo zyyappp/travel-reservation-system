@@ -164,13 +164,14 @@ RM {net_total:.2f}
                 account["reservations"]["car"].append({
                             "reservation_id" : total_reservations,
                             "name" : f"{brand} {car_model}",
+                            "city" : account["city"],
                             "brand" : brand,
                             "model" : car_model,
                             "segment" : segment,
                             "price" : car_price,
                             "net_total" : net_total,
-                            "start_date" : str(start),
-                            "end_date" : str(end),
+                            "start" : str(start),
+                            "end" : str(end),
                             "days" : no_of_days,
                             "paid" : False,
                             "expired" : False
