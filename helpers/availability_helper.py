@@ -1,5 +1,11 @@
-from config import hotel_data
-from config import ROOM_AVAILABILITY_PATH
+#module name  : availability_helper.py
+#date created : 19th August 2026
+#created by   : 
+#imported     : config, json
+#amendment    :
+#remark       : Loading and dumping room_availability.json
+
+from config import hotel_data, ROOM_AVAILABILITY_PATH
 import json
 
 def dump_availability(info):

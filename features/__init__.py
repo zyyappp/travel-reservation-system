@@ -1,3 +1,10 @@
+#module name  : __init__.py
+#date created : 13th August 2026
+#created by   : Yap Zi Yi
+#imported     : config, json
+#amendment    :
+#remark       : Declare folder as module & loading & dumping jsons
+
 from config import RESERVES_PATH
 import json
 

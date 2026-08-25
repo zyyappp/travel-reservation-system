@@ -1,3 +1,9 @@
+#module name  : expiry_helper.py
+#date created : 25th August 2026
+#created by   : 
+#imported     : datetime
+#amendment    :
+#remark       : Check whether a reservation expired
 from datetime import datetime
 
 

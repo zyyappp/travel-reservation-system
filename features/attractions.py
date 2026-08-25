@@ -1,3 +1,9 @@
+#module name  : attractions.py
+#date created : 19th August 2026
+#created by   : Yap Zi Yi
+#imported     : features, helpers.login_helper, helpers.selection_helper, helpers.cli_helper, config, datetime, features.payment, time
+#amendment    :
+#remark       : Attractions Reservations 
 from features import load_reserve, dump_reserve
 from helpers.login_helper import load_login, dump_login
 from helpers.selection_helper import search, select
@@ -6,7 +12,6 @@ from config import attraction_data
 from datetime import datetime
 from features.payment import payment
 import time
-
 
 def apply_filter(data, city, user_filter):
     # Takes the attraction data, selected city and user's filter.

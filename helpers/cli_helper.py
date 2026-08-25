@@ -1,3 +1,9 @@
+#module name  : cli_helper.py
+#date created : 13th August 2026
+#created by   :
+#imported     : subprocess, platform
+#amendment    :
+#remark       : clearing CLI & printing UI
 import subprocess
 import platform
 

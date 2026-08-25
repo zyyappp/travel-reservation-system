@@ -1,5 +1,12 @@
+#module name  : reservations.py
+#date created : 24th August 2026
+#created by   : Yap Zi Yi
+#imported     : features, helpers.selection_helper, helpers.cli_helper, helpers.login_helper
+#amendment    :
+#remark       : Reservations 
+
 from features import load_reserve, dump_reserve
-from helpers.selection_helper import select, checkbox
+from helpers.selection_helper import select
 from helpers.cli_helper import clear, print_header
 from helpers.login_helper import load_login, dump_login
 

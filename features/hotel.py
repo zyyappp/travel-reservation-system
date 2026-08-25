@@ -1,3 +1,10 @@
+#module name  : hotel.py
+#date created : 15th August 2026
+#created by   : Yap Zi Yi
+#imported     : features, helpers.selection_helper, config, helpers.cli_helper, json, textwrap, features.payment, datetime, math, helpers.availability_helper, helpers.login_helper
+#amendment    :
+#remark       : Hotel Reservations 
+
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
 from config import hotel_data

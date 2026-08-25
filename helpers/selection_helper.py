@@ -1,3 +1,10 @@
+#module name  : selection_helper.py
+#date created : 13th August 2026
+#created by   : 
+#imported     : InquirerPy
+#amendment    :
+#remark       : Selection, Searching, Checkbox UI
+
 from InquirerPy import inquirer
 
 

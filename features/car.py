@@ -1,3 +1,9 @@
+#module name  : car.py
+#date created : 13th August 2026
+#created by   : 
+#imported     : features, helpers.selection_helper, config, datetime, features.payment, helpers.cli_helper
+#amendment    :
+#remark       : Car reservation
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search, select
 from config import car_data

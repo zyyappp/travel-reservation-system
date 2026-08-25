@@ -1,3 +1,9 @@
+#module name  : login_helper.py
+#date created : 13th August 2026
+#created by   : 
+#imported     : features.city
+#amendment    :
+#remark       : User class
 from features.city import select_city
 
 class User:

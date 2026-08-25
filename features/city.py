@@ -1,3 +1,10 @@
+#module name  : city.py
+#date created : 13th August 2026
+#created by   : 
+#imported     : features, helpers.selection_helper, config, helpers.cli_helper
+#amendment    :
+#remark       : City selection
+
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search
 from config import hotel_data

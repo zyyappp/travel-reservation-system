@@ -1,3 +1,9 @@
+#module name  : payment.py
+#date created : 13th August 2026
+#created by   : Yap Zi Yi
+#imported     : config, json, re (regex), time, datetime, features, helpers.cli_helper, helpers.selection_helper
+#amendment    :
+#remark       : Payment
 import json
 import re
 import time

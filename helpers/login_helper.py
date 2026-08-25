@@ -1,3 +1,9 @@
+#module name  : login_helper.py
+#date created : 11th August 2026
+#created by   : Yap Zi Yi
+#imported     : json, re (regex), datetime, config, user_class, helpers.selection_helper, helpers.selection_helper, features, helpers.expiry_helper
+#amendment    :
+#remark       : Login
 import json
 import re
 import time
