@@ -1,0 +1,25 @@
+<mxfile host="Electron">
+  <diagram name="rating(HotelRating)" id="p5eOAZi7-lGn-D5kGYUU">
+    <mxGraphModel dx="975" dy="580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zJ_OA7UrbDr8UMq1dx-6-4" edge="1" parent="1" source="zJ_OA7UrbDr8UMq1dx-6-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="zJ_OA7UrbDr8UMq1dx-6-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zJ_OA7UrbDr8UMq1dx-6-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="Start" vertex="1">
+          <mxGeometry height="50" width="100" x="390" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zJ_OA7UrbDr8UMq1dx-6-6" edge="1" parent="1" source="zJ_OA7UrbDr8UMq1dx-6-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="zJ_OA7UrbDr8UMq1dx-6-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zJ_OA7UrbDr8UMq1dx-6-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ratings = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;]" vertex="1">
+          <mxGeometry height="60" width="260" x="310" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="zJ_OA7UrbDr8UMq1dx-6-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="return &quot;★&quot; * (ratings.index(HotelRating.lower()[:-4]) + 1) if HotelRating.lower()[:-4] in ratings else &quot;N/A&quot;" vertex="1">
+          <mxGeometry height="80" width="300" x="290" y="310" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
