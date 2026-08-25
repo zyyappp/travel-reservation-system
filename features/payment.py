@@ -318,7 +318,7 @@ def handle_payment_success(
 
   user_transactions.append(success_trans)
 
-  for key, value in account["reservations"].items():
+  for _, value in account["reservations"].items():
     for r in value:
       if r["reservation_id"] in selected_id:
         r["paid"] = True

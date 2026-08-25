@@ -1,7 +1,7 @@
 from features import load_reserve, dump_reserve
 from helpers.selection_helper import search
 from config import hotel_data
-from helpers.cli_helper import clear, print_header
+from helpers.cli_helper import print_header
 
 def select_city(user_id):
     current_page = "city_selection"

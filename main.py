@@ -1,3 +1,10 @@
+#module name  : main.py
+#date created : 22nd July 2026
+#created by   : Yap Zi Yi
+#imported     : select, login_user, manage_acccounts, reserve_hotel, reserve_car, switch_city, reserve_attraction, payment, reservations, clear
+#amendment    :
+#remark       : Main Menu
+
 from helpers.selection_helper import select
 from helpers.login_helper import login_user, manage_accounts
 from features.hotel import reserve_hotel
@@ -24,6 +31,7 @@ def menu_interface():
         "Switch City": switch_city,
         "Manage Accounts": manage_accounts,
     }
+    
     while menu:
         clear()
         try:
