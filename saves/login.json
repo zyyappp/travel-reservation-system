@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "id": 1,
+        "user": "Yap",
+        "password": "Yzy!1",
+        "date_created": "2026-08-25 12:43:28.233726",
+        "last_login": "2026-08-26 01:53:20.855925",
+        "hotel_filter": "Price: Low \u2192 High",
+        "attractions_filter": "Default",
+        "reservations_filter": "Default"
+    }
+]

@@ -90,7 +90,7 @@ def select_attraction_dates():
             print("Invalid date. Try again.")
             continue
 
-        days = (end - start).days
+        days = (end - start).days +1
 
         if days < 0:
             print("End date cannot be earlier than the start date.")

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "city": "Kuala Lumpur",
+        "reservations": {
+            "hotel": [
+                {
+                    "reservation_id": 1,
+                    "name": "Magnum Homestay @ Sunway Velocity",
+                    "city": "Kuala Lumpur",
+                    "rating": 1,
+                    "start": "2026-08-26",
+                    "end": "2026-08-28",
+                    "nights": 2,
+                    "room_type": "double",
+                    "rooms": 1,
+                    "base_price": 29.0,
+                    "net_total": 72.63,
+                    "paid": false,
+                    "expired": false
+                }
+            ],
+            "car": [
+                {
+                    "reservation_id": 2,
+                    "name": "Toyota Camry",
+                    "city": "Kuala Lumpur",
+                    "brand": "Toyota",
+                    "model": "Camry",
+                    "segment": "Sedan",
+                    "price": 171.74,
+                    "net_total": 343.48,
+                    "start": "2026-08-26",
+                    "end": "2026-08-28",
+                    "days": 2,
+                    "paid": false,
+                    "expired": false
+                }
+            ],
+            "attractions": [
+                {
+                    "reservation_id": 3,
+                    "name": "Petronas Twin Towers",
+                    "city": "Kuala Lumpur",
+                    "category": "Landmark",
+                    "start": "2027-08-26",
+                    "end": "2027-08-28",
+                    "days": 3,
+                    "price": 98.0,
+                    "pax": 4,
+                    "net_total": 1176.0,
+                    "paid": false,
+                    "expired": false
+                }
+            ]
+        }
+    }
+]

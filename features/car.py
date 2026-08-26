@@ -65,7 +65,7 @@ def select_car_dates():
             print("Invalid date. Try again.")
             continue
 
-        no_of_days = (end - start).days
+        no_of_days = (end - start).days+ 1
 
         if no_of_days < 0:
             print("End date cannot be earlier than the start date.")
