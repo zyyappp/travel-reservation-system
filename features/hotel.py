@@ -224,16 +224,16 @@ Filter: {user_filter}
             else:
                 user_filter = new_filter
 
-            city_hotels = apply_filter(
-                hotel_data,
-                account["city"],
-                user_filter
-            )
+                city_hotels = apply_filter(
+                    hotel_data,
+                    account["city"],
+                    user_filter
+                )
 
-            account_login["hotel_filter"] = user_filter
-            dump_login(user_login)
+                account_login["hotel_filter"] = user_filter
+                dump_login(user_login)
 
-            current_page = "hotel_search"
+                current_page = "hotel_search"
 
 
         if current_page == "hotel_selection":

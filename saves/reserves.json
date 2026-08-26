@@ -18,6 +18,21 @@
                     "net_total": 72.63,
                     "paid": false,
                     "expired": false
+                },
+                {
+                    "reservation_id": 4,
+                    "name": "Magnum Homestay @ Sunway Velocity",
+                    "city": "Kuala Lumpur",
+                    "rating": 1,
+                    "start": "2026-08-26",
+                    "end": "2026-08-29",
+                    "nights": 3,
+                    "room_type": "single",
+                    "rooms": 3,
+                    "base_price": 29.0,
+                    "net_total": 261.0,
+                    "paid": false,
+                    "expired": false
                 }
             ],
             "car": [
