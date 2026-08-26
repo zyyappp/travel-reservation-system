@@ -43,7 +43,7 @@ def apply_filter(data, city, user_filter):
         city_hotels = city_hotels.sort_values(
             by="HotelRating",
             key=lambda series: series.map(
-                lambda r: len(rating(r)) if rating(r) != "N/A" else 0
+                lambda r: len(rating(r)) if rating(r) != "N/A" else 0 
             )
         )
 
@@ -102,10 +102,10 @@ def select_dates():
     while not valid_date:
 
         try:
-            start_input = input("Enter start date (DD/MM/YYYY) >> ")
-            end_input = input("Enter end date (DD/MM/YYYY) >> ")
+            start_input = input("Enter start date (DD/MM/YYYY) >> ").strip()
+            end_input = input("Enter end date (DD/MM/YYYY) >> ").strip()
 
-            if start_input == "" or end_input == "":
+            if not start_input or not end_input:
                 return None
 
             start = datetime.strptime(start_input, "%d/%m/%Y").date()
