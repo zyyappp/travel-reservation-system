@@ -327,10 +327,10 @@ Base price: RM {hotel_price:.2f} / night
                 input(">> ")
 
             elif confirm_reserve == "Continue":
-                current_page = "continue"
+                current_page = "select_room"
 
 
-        if current_page == "continue":
+        if current_page == "select_room":
 
             room_list = [
                 "Single Room",
@@ -363,7 +363,7 @@ Base price: RM {hotel_price:.2f} / night
             ).strip()
 
             if not num_rooms:
-                current_page = "continue"
+                current_page = "select_room"
 
             elif not num_rooms.isdigit() or int(num_rooms) <= 0:
                 print(
@@ -397,7 +397,7 @@ Base price: RM {hotel_price:.2f} / night
             dates = select_dates()
 
             if dates is None:
-                current_page = "continue"
+                current_page = "select_room"
 
             else:
                 start, end, start_input, end_input, nights = dates
