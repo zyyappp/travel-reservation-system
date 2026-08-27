@@ -11,7 +11,7 @@ from helpers.cli_helper import clear, print_header
 from config import attraction_data
 from datetime import datetime
 from features.payment import payment
-import time
+
 
 def apply_filter(data, city, user_filter):
     # Takes the attraction data, selected city and user's filter.
@@ -280,11 +280,11 @@ RM {attraction_price:.2f} / pax
 
             elif not num_ppl.isdigit() or int(num_ppl) <= 0:
                 print("Number of people must be an integer and not less than or equal to zero.")
-                time.sleep(0.5)
+                input()
 
             elif int(num_ppl) > 10:
                 print("Number of people cannot exceed the maximum reservable capacity.")
-                time.sleep(0.5)
+                input()
 
             else:
                 num_ppl = int(num_ppl)
@@ -300,10 +300,10 @@ RM {attraction_price:.2f} / pax
 
             else:
                 start, end, start_input, end_input, days = dates
-                current_page = "continue"
+                current_page = "reservation_summary"
 
 
-        if current_page == "continue":
+        if current_page == "reservation_summary":
             print_header("RESERVATION SUMMARY")
 
             net_total = attraction_price * num_ppl * days
@@ -341,9 +341,7 @@ RM {net_total:.2f}
 
             if confirm == "Yes":
 
-                total_reservations = (
-                    sum(len(v) for v in account["reservations"].values()) + 1
-                )
+                total_reservations = sum(len(v) for v in account["reservations"].values()) + 1
 
                 print("\nReserved!\n")
 
