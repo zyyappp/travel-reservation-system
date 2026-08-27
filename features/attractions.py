@@ -76,7 +76,7 @@ def select_attraction_dates():
             start_input = input("Enter start date (DD/MM/YYYY) >> ")
             end_input = input("Enter end date (DD/MM/YYYY) >> ")
 
-            if start_input == "" or end_input == "":
+            if not start_input or not end_input:
                 return None
 
             start = datetime.strptime(start_input, "%d/%m/%Y").date()
@@ -94,13 +94,13 @@ def select_attraction_dates():
 
         if days < 0:
             print("End date cannot be earlier than the start date.")
-            continue
+
 
         elif days == 0:
             print("Day difference cannot be 0")
-            continue
 
         else:
+            valid_date = True
             return start, end, start_input, end_input, days
 
 
@@ -150,7 +150,7 @@ def reserve_attraction(user_id):
 
             if browse_or_sort == "BACK" or browse_or_sort == "Back":
                 current_page = "finished"
-                return
+                return None
 
             elif browse_or_sort == browse_selection[0]:
                 current_page = "attractions_selection"
