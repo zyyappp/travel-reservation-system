@@ -9,6 +9,7 @@ from features import load_reserve, dump_reserve
 from helpers.selection_helper import select
 from helpers.cli_helper import clear, print_header
 from helpers.login_helper import load_login, dump_login
+from helpers.availability_helper import load_availability, dump_availability
 
 
 def get_city_reservations(data, city):
@@ -159,6 +160,7 @@ def reservations(user_id):
 
     reservation_datas = load_reserve()
     user_login = load_login()
+    availability_data = load_availability()
 
     account_login = next(
         data for data in user_login
@@ -347,33 +349,39 @@ def reservations(user_id):
 
             print_header("CANCEL RESERVATION")
 
-            print(f"""
-Reservation ID:  {reservation["reservation_id"]}
-Name:            {reservation["name"]}
-City:            {reservation["city"]}
-Start:           {reservation["start"]}
-End:             {reservation["end"]}
-Total:           RM {reservation["net_total"]:.2f}
-Payment:         {"PAID" if reservation["paid"] else "UNPAID"}
-
-Are you sure you want to cancel this reservation?
-""")
-
-            confirm = select(
-                "Select an option:",
-                [
-                    "Yes, cancel reservation",
-                    "No, keep reservation"
-                ]
-            )
-
-            if confirm == "Yes, cancel reservation":
-
-                current_page = "cancel_reservation"
-
+            if reservation["paid"]:
+                print("The reservation has been paid and cannot be cancelled. Refunds are not applicable.")
+                current_page = "view_reservations"
+                input()
             else:
 
-                current_page = "reservation_details"
+                print(f"""
+    Reservation ID:  {reservation["reservation_id"]}
+    Name:            {reservation["name"]}
+    City:            {reservation["city"]}
+    Start:           {reservation["start"]}
+    End:             {reservation["end"]}
+    Total:           RM {reservation["net_total"]:.2f}
+    Payment:         {"PAID" if reservation["paid"] else "UNPAID"}
+
+    Are you sure you want to cancel this reservation?
+    """)
+
+                confirm = select(
+                    "Select an option:",
+                    [
+                        "Yes, cancel reservation",
+                        "No, keep reservation"
+                    ]
+                )
+
+                if confirm == "Yes, cancel reservation":
+
+                    current_page = "cancel_reservation"
+
+                else:
+
+                    current_page = "reservation_details"
 
 
         # CANCEL RESERVATION
@@ -389,9 +397,14 @@ Are you sure you want to cancel this reservation?
                 if reservation in reservations_list:
 
                     reservations_list.remove(reservation)
+
+                    if reservation["name"] in availability_data.keys():
+                        availability_data[reservation["name"]] += reservation["rooms"]
+
                     break
 
             dump_reserve(reservation_datas)
+            dump_availability(availability_data)
 
             print("Reservation cancelled successfully! ✓")
 

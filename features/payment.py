@@ -104,7 +104,7 @@ def handle_proceed_payment(account):
   reservation_list.sort(key=lambda r: r["reservation_type"])
 
   reservation_interface = [
-      f"{r['reservation_type']} | {r['details']} | {r['reservation_value']}"
+      f"{r['reservation_type']} | Reservation #{r['reservation_id']} | {r['details']} | {r['reservation_value']}"
       f" {r['reservation_unit']} | RM {r['net_total']:.2f}"
       for r in reservation_list
   ]
@@ -160,13 +160,9 @@ RESERVATIONS:
 # Let user select their preferred payment channel
 def handle_payment_method():
   clear()
-  print(f"""
-{'─' * 60}
-SELECT PAYMENT METHOD
-{'─' * 60}
-""")
-  methods = ["Credit / Debit Card", "Online Banking", "E-Wallet", "Back"]
-  payment_method = select("", methods)
+  print_header("SELECT PAYMENT METHOD")
+  methods = ["Credit / Debit Card", "Online Banking", "E-Wallet"]
+  payment_method = select("", methods + ["Back"])
 
   if payment_method == "Back" or payment_method == "BACK":
     return "checkout_summary", None
@@ -182,11 +178,7 @@ SELECT PAYMENT METHOD
 # Show list of supported banks for online banking
 def handle_pay_bank():
   clear()
-  print(f"""
-{'─' * 60}
-PAYMENT (ONLINE BANKING)
-{'─' * 60}
-""")
+  print_header("PAYMENT (ONLINE BANKING)")
   banks = [
       "Maybank",
       "CIMB Bank",
@@ -234,11 +226,7 @@ Amount: RM {total:.2f}
 # Select from available e-wallet options
 def handle_ewallet():
   clear()
-  print(f"""
-{'─' * 60}
-PAYMENT (E-WALLET)
-{'─' * 60}
-""")
+  print_header("PAYMENT (E-WALLET)")
   ewallets = ["Touch 'n Go eWallet", "GrabPay", "Boost", "ShopeePay"]
   select_ewallet = select("Select E-wallet\n", ewallets + ["Back"])
 
@@ -265,11 +253,7 @@ Amount: RM {total:.2f}
 # Prompt and validate card details using regex and Luhn algorithm
 def handle_pay_card():
   clear()
-  print(f"""
-{'─' * 60}
-PAYMENT (CREDIT / DEBIT CARD)
-{'─' * 60}
-""")
+  print_header("PAYMENT (CREDIT / DEBIT CARD)")
   card_num = re.sub(r"\s", "", input("Enter card number >> ")).strip()
 
   if not card_num:
@@ -298,7 +282,7 @@ def handle_payment_success(
     selected_id,
     transaction_data,
     user_data,
-    user_transactions,
+    user_transactions
 ):
   auth_animation()
   clear()
@@ -426,9 +410,7 @@ def payment(user_id):
   selected_reservations = []
   selected_id = set()
   total = 0.0
-  payment_method = ""
-  select_bank = ""
-  select_ewallet = ""
+  payment_method = select_bank = select_ewallet =  ""
 
   while current_page != "finished":
     clear()
@@ -438,40 +420,40 @@ def payment(user_id):
       if current_page == "finished":
         return
 
-    elif current_page == "proceed_payment":
+    if current_page == "proceed_payment":
       current_page, sel_res, sel_id = handle_proceed_payment(account)
       if sel_res is not None:
         selected_reservations = sel_res
         selected_id = sel_id
 
-    elif current_page == "checkout_summary":
+    if current_page == "checkout_summary":
       current_page, total = handle_checkout_summary(selected_reservations)
 
-    elif current_page == "payment_method":
+    if current_page == "payment_method":
       current_page, method = handle_payment_method()
       if method:
         payment_method = method
 
-    elif current_page == "pay_bank":
+    if current_page == "pay_bank":
       current_page, bank = handle_pay_bank()
       if bank:
         select_bank = bank
 
-    elif current_page == "bank_auth":
+    if current_page == "bank_auth":
       current_page = handle_bank_auth(select_bank, total)
 
-    elif current_page == "ewallet":
+    if current_page == "ewallet":
       current_page, wallet = handle_ewallet()
       if wallet:
         select_ewallet = wallet
 
-    elif current_page == "ewallet_trans":
+    if current_page == "ewallet_trans":
       current_page = handle_ewallet_trans(select_ewallet, total)
 
-    elif current_page == "pay_card":
+    if current_page == "pay_card":
       current_page = handle_pay_card()
 
-    elif current_page == "payment_success":
+    if current_page == "payment_success":
       current_page = handle_payment_success(
           trans_acc,
           payment_method,
@@ -484,5 +466,5 @@ def payment(user_id):
           user_transactions,
       )
 
-    elif current_page == "view_transaction":
+    if current_page == "view_transaction":
       current_page = handle_view_transaction(trans_acc, user_transactions)
